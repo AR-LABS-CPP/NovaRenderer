@@ -90,7 +90,6 @@ namespace Nova {
 		glEnable(GL_DEPTH_TEST);
 		createCallbacks();
 		glfwSwapInterval(1);
-		// glfwSetInputMode(mainWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 		glfwSetWindowUserPointer(mainWindow, this);
 
 		return true;
@@ -107,13 +106,16 @@ namespace Nova {
 		deltaTime = currentFrameTime - lastFrameTime;
 		lastFrameTime = currentFrameTime;
 
-		if (keys[GLFW_KEY_ESCAPE]) {
-			glfwSetWindowShouldClose(mainWindow, GL_TRUE);
+		for (int idx = 0; idx < GLFW_KEY_LAST; idx++) {
+			keys[idx] = glfwGetKey(mainWindow, idx) == GLFW_PRESS;
 		}
 
-		// TODO: dispatch events instead of binding objects (BECAUSE_OF: circular dep)
-		// camera->processKeyboard(keys, static_cast<GLfloat>(deltaTime));
-		// camera->processMouse(keys, getXChange(), getYChange());
+		KeyStateEvent keyStateEvent(keys, deltaTime);
+		EventBus::getInstance().dispatch(keyStateEvent);
+
+		if (glfwGetKey(mainWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+			glfwSetWindowShouldClose(mainWindow, GL_TRUE);
+		}
 
 		glClearColor(clearColor.x, clearColor.y, clearColor.z, clearColor.w);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -132,6 +134,10 @@ namespace Nova {
 			Window* win = static_cast<Window*>(glfwGetWindowUserPointer(window));
 			win->setWindowWidth(width);
 			win->setWindowHeight(height);
+			
+			WindowResizeEvent resizeEvent(width, height);
+			EventBus::getInstance().dispatch(resizeEvent);
+			
 			win->update(glm::vec4(0.1, 0.1, 0.1, 1.0));
 		});
 		glfwSetMouseButtonCallback(mainWindow, handleMouseButton);
@@ -146,19 +152,14 @@ namespace Nova {
 
 		if (key >= 0 && key < 1024) {
 			if (action == GLFW_PRESS) {
-				currentWindow->keys[key] = true;
+				KeyPressedEvent keyPressedEvent(key, 1);
+				EventBus::getInstance().dispatch(keyPressedEvent);
 			}
 			else if (action == GLFW_RELEASE) {
-				currentWindow->keys[key] = false;
+				KeyReleasedEvent keyReleasedEvent(key);
+				EventBus::getInstance().dispatch(keyReleasedEvent);
 			}
 		}
-
-		/*if (key == GLFW_KEY_LEFT_SHIFT) {
-			currentWindow->isPanning = (action == GLFW_PRESS);
-		}
-		else if (key == GLFW_KEY_LEFT_CONTROL) {
-			currentWindow->isZooming = (action == GLFW_PRESS);
-		}*/
 	}
 
 	void Window::handleMouse(GLFWwindow* window, double xPos, double yPos) {
@@ -168,6 +169,9 @@ namespace Nova {
 			currentWindow->lastX = static_cast<GLfloat>(xPos);
 			currentWindow->lastY = static_cast<GLfloat>(yPos);
 			currentWindow->mouseFirstMoved = false;
+
+			MouseMovedEvent mouseMovedEvent(xPos, yPos, currentWindow->keys);
+			EventBus::getInstance().dispatch(mouseMovedEvent);
 		}
 		else {
 			currentWindow->xChange = static_cast<GLfloat>(xPos - currentWindow->lastX);
@@ -175,30 +179,18 @@ namespace Nova {
 
 			currentWindow->lastX = static_cast<GLfloat>(xPos);
 			currentWindow->lastY = static_cast<GLfloat>(yPos);
-		}
 
-		/*if (currentWindow->isOrbiting) {
-			currentWindow->camera->orbit(currentWindow->getXChange(), currentWindow->getYChange());
+			MouseMovedEvent mouseMovedEvent(currentWindow->xChange, currentWindow->yChange, currentWindow->keys);
+			EventBus::getInstance().dispatch(mouseMovedEvent);
 		}
-		else if (currentWindow->isPanning) {
-			currentWindow->camera->pan(currentWindow->getXChange(), currentWindow->getYChange());
-		}
-		else if (currentWindow->isZooming) {
-			currentWindow->camera->zoom(currentWindow->getYChange());
-		}*/
 	}
 
 	void Window::handleMouseButton(GLFWwindow* window, int button, int action, int mods) {
 		Window* currentWindow = static_cast<Window*>(glfwGetWindowUserPointer(window));
-
-		/*if (button == GLFW_MOUSE_BUTTON_RIGHT) {
-			currentWindow->isOrbiting = (action == GLFW_PRESS);
-		}*/
 	}
 
 	void Window::handleScroll(GLFWwindow* window, double xOffset, double yOffset) {
 		Window* currentWindow = static_cast<Window*>(glfwGetWindowUserPointer(window));
-		// currentWindow->camera->zoom(static_cast<GLfloat>(yOffset));
 	}
 
 	GLfloat Window::getXChange() {

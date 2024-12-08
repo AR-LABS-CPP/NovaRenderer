@@ -3,6 +3,8 @@
 
 namespace Nova {
 	void Engine::initializeAndRun() {
+		subscribeToEvents();
+
 		logManager = Nova::LogManager();
 		logManager.initialize();
 
@@ -66,7 +68,7 @@ namespace Nova {
 			windowHeight
 		);
 		
-		Nova::UI novaUi(mainWindow);
+		Nova::UI novaUi(&mainWindow);
 		novaUi.initializeUI();
 
 		while(!mainWindow.windowShouldClose()) {
@@ -95,6 +97,12 @@ namespace Nova {
 		}
 
 		novaUi.shutdownUI();
+	}
+
+	void Engine::subscribeToEvents() {
+		EventBus::getInstance().subscribe<WindowResizeEvent>([this](Event& event) {
+			onWindowResize(event);
+		});
 	}
 
 	void Engine::shutdown() {

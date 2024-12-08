@@ -1,37 +1,50 @@
 #pragma once
-
 #include <vector>
 #include <functional>
 #include <unordered_map>
 #include <typeindex>
+#include <memory>
+#include <mutex>
 #include <iostream>
 #include "Event.h"
 
 namespace Nova {
-	class EventBus {
-	public:
-		using EventHandler = std::function<void(Event&)>;
+    class EventBus {
+    public:
+        EventBus(const EventBus&) = delete;
+        EventBus& operator=(const EventBus&) = delete;
 
-		template<typename T>
-		void subscribe(const EventHandler& handler) {
-			auto type = std::type_index(typeid(T));
-			m_Handlers[type].push_back([handler](Event& event) {
-				if (event.GetEventType() == T::GetStaticType()) {
-					handler(event);
-				}
-			});
-		}
+        static EventBus& getInstance() {
+            static EventBus instance;
+            return instance;
+        }
 
-		void dispatch(Event& event) {
-			auto type = std::type_index(typeid(event));
+        using EventHandler = std::function<void(Event&)>;
 
-			if (m_Handlers.find(type) != m_Handlers.end()) {
-				for (auto& handler : m_Handlers[type]) {
-					handler(event);
-				}
-			}
-		}
-	private:
-		std::unordered_map<std::type_index, std::vector<EventHandler>> m_Handlers;
-	};
+        template<typename T>
+        void subscribe(const EventHandler& handler) {
+            std::type_index typeIndex = std::type_index(typeid(T));
+            std::lock_guard<std::mutex> lock(m_Mutex);
+            
+            m_Handlers[typeIndex].push_back(handler);
+        }
+
+        void dispatch(Event& event) {
+            std::type_index typeIndex = std::type_index(typeid(event));
+            std::lock_guard<std::mutex> lock(m_Mutex);
+
+            auto it = m_Handlers.find(typeIndex);
+            if (it != m_Handlers.end()) {
+                for (auto& handler : it->second) {
+                    handler(event);
+                }
+            }
+        }
+
+    private:
+        EventBus() = default;
+
+        std::unordered_map<std::type_index, std::vector<EventHandler>> m_Handlers;
+        std::mutex m_Mutex;
+    };
 }

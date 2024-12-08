@@ -8,7 +8,8 @@
 namespace Nova {
 	class UI {
 	public:
-		UI(Window& currWindow);
+		UI() = delete;
+		UI(Window* currWindow);
 		~UI() = default;
 
 		void initializeUI();
@@ -24,6 +25,6 @@ namespace Nova {
 		bool wantsToCaptureMouse();
 		bool wantsToCaptureKeyboard();
 	private:
-		Window attachedWindow;
+		Window* attachedWindow;
 	};
 }

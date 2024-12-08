@@ -18,7 +18,9 @@ namespace Nova {
 		glm::vec3 cameraUp
 	) : yaw(yaw), pitch(pitch), lastX(lastX), lastY(lastY), sensitivity(sensitivity), movementSpeed(movementSpeed),
 		fieldOfView(fieldOfView), aspectRatio(aspectRatio), windowWidth(windowWidth), windowHeight(windowHeight),
-		projectionMatrix(glm::mat4(1.0)), cameraPos(cameraPos),cameraFront(cameraFront), cameraUp(cameraUp) {}
+		projectionMatrix(glm::mat4(1.0)), cameraPos(cameraPos),cameraFront(cameraFront), cameraUp(cameraUp) {
+		subscribeToEvents();
+	}
 
 	void Camera::toggleFirstMouse() {
 		if (firstMouse) {
@@ -42,8 +44,10 @@ namespace Nova {
 		projectionMatrix = glm::perspective(glm::radians(fieldOfView), aspectRatio, 0.1f, 100.0f);
 	}
 
-	void Camera::processKeyboard(bool* keys, GLfloat deltaTime) {
-		GLfloat velocity = movementSpeed * deltaTime;
+	void Camera::processKeyboard(KeyStateEvent& event) {
+		GLfloat velocity = movementSpeed * event.getDeltaTime();
+		
+		bool* keys = event.getKeys();
 
 		if (keys[GLFW_KEY_LEFT_CONTROL]) {
 			if (keys[GLFW_KEY_W]) cameraPos += cameraFront * velocity;
@@ -55,7 +59,9 @@ namespace Nova {
 		}
 	}
 
-	void Camera::processMouse(bool* keys, GLfloat xPos, GLfloat yPos) {
+	void Camera::processMouse(MouseMovedEvent& event) {
+		bool* keys = event.getKeys();
+
 		if (keys[GLFW_KEY_LEFT_CONTROL]) {
 			if (firstMouse) {
 				lastX = windowWidth / 2.0;
@@ -64,8 +70,8 @@ namespace Nova {
 				firstMouse = false;
 			}
 
-			lastX = static_cast<GLfloat>(xPos);
-			lastY = static_cast<GLfloat>(yPos);
+			lastX = static_cast<GLfloat>(event.GetX());
+			lastY = static_cast<GLfloat>(event.GetY());
 
 			lastX *= sensitivity;
 			lastY *= sensitivity;
@@ -147,5 +153,17 @@ namespace Nova {
 		front.z = std::sin(glm::radians(yaw)) * std::cos(glm::radians(pitch));
 
 		cameraFront = glm::normalize(front);
+	}
+
+	void Camera::subscribeToEvents() {
+		EventBus::getInstance().subscribe<KeyStateEvent>([this](Event& event) {
+			auto& keyStateEvent = static_cast<KeyStateEvent&>(event);
+			processKeyboard(keyStateEvent);
+		});
+
+		EventBus::getInstance().subscribe<MouseMovedEvent>([this](Event& event) {
+			auto& mouseMovedState = static_cast<MouseMovedEvent&>(event);
+			processMouse(mouseMovedState);
+		});
 	}
 }

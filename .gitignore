@@ -31,3 +31,6 @@
 *.out
 *.app
 /.vs/NovaEngine
+
+/x64/
+/NovaEngine/x64/

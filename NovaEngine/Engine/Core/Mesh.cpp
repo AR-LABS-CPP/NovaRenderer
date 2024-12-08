@@ -110,7 +110,6 @@ namespace Nova {
 		NOVA_ASSERT(width != 0 && height != 0, "width or height cannot be zero");
 		
 		if (FBO == 0) {
-			std::cout << FBO << std::endl;
 			createFrameBuffer(width, height);
 		}
 

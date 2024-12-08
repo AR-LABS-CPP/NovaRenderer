@@ -2,7 +2,7 @@
 #include "UI.h"
 
 namespace Nova {
-	UI::UI(Window& currentWindow) {
+	UI::UI(Window* currentWindow) {
 		attachedWindow = currentWindow;
 	}
 
@@ -16,7 +16,7 @@ namespace Nova {
 
 		ImGui::StyleColorsDark();
 
-		ImGui_ImplGlfw_InitForOpenGL(attachedWindow.getWindowObject(), true);
+		ImGui_ImplGlfw_InitForOpenGL(attachedWindow->getWindowObject(), true);
 		ImGui_ImplOpenGL3_Init("#version 460 core");
 
 		NOVA_INFO("UI initialized");

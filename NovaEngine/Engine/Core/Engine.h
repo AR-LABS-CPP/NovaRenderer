@@ -14,6 +14,8 @@
 #include "Renderer/FrameBuffer.h"
 #include "UI/UI.h"
 #include "Log/Logging.h"
+#include "Events/WindowEvent.h"
+#include "Events/EventBus.h"
 
 namespace Nova {
 	class Engine {
@@ -22,8 +24,13 @@ namespace Nova {
 		~Engine();
 
 		void initializeAndRun();
+		void subscribeToEvents();
 		void shutdown();
 	private:
 		Nova::LogManager logManager;
+
+		void onWindowResize(Event& event) {
+			auto& resizeEvent = static_cast<WindowResizeEvent&>(event);
+		}
 	};
 }

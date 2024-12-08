@@ -1,5 +1,9 @@
 #pragma once
 
+#include "Events/EventBus.h"
+#include "Events/MouseEvent.h"
+#include "Events/KeyEvent.h"
+
 namespace Nova {
 	class Camera {
 	public:
@@ -24,8 +28,8 @@ namespace Nova {
 		void setSensitivity(GLfloat newSensitivity);
 		void setAspectRatio(GLfloat aspectratio);
 
-		void processKeyboard(bool* keys, GLfloat deltaTime);
-		void processMouse(bool* keys, GLfloat xPos, GLfloat yPos);
+		void processKeyboard(KeyStateEvent& event);
+		void processMouse(MouseMovedEvent& event);
 
 		void orbit(GLfloat xChange, GLfloat yChange);
 		void pan(GLfloat xChange, GLfloat yChange);
@@ -35,6 +39,8 @@ namespace Nova {
 		glm::mat4 getProjectionMatrix();
 		glm::vec3 getCameraPosition();
 		glm::vec3 getCameraFront();
+
+		void subscribeToEvents();
 	private:
 		GLboolean firstMouse = true;
 		GLboolean projectionMatrixInit = false;

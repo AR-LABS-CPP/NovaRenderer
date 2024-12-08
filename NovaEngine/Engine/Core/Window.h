@@ -3,6 +3,8 @@
 #include "pch.h"
 #include "Log/Log.h"
 #include "Events/WindowEvent.h"
+#include "Events/KeyEvent.h"
+#include "Events/MouseEvent.h"
 
 namespace Nova {
 	class Window {
@@ -18,8 +20,6 @@ namespace Nova {
 		bool windowShouldClose();
 		void update(glm::vec4 clearColor);
 		void swap();
-
-		EventBus eventBus;
 
 		GLfloat getXChange();
 		GLfloat getYChange();
@@ -38,11 +38,7 @@ namespace Nova {
 		GLuint majorVersion, minorVersion;
 		int bufferWidth, bufferHeight;
 
-		bool keys[1024];
-		bool isOrbiting = false;
-		bool isPanning = false;
-		bool isZooming = false;
-
+		bool keys[348] = { false };
 		GLfloat lastX, lastY;
 		GLfloat xChange, yChange;
 		bool mouseFirstMoved;
