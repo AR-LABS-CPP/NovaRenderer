@@ -10,6 +10,8 @@
 #include <queue>
 #include <map>
 #include <unordered_map>
+#include <string>
+#include <functional>
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -29,6 +31,7 @@
 #include "imgui_internal.h"
 
 #include "Common.h"
+#include "Events/EventBus.h"
 
 #ifdef NOVA_PLATFORM_WINDOWS
 #endif // NOVA_PLATFORM_WINDOWS
