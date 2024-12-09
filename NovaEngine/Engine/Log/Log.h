@@ -16,7 +16,7 @@
 #ifndef NOVA_CONFIG_RELEASE
 	#define NOVA_LOG(level, ...) \
 		if(spdlog::get(NOVA_DEFAULT_LOGGER_NAME)) \
-			{ spdlog::get(NOVA_DEFAULT_LOGGER_NAME)->level("[{}] {}", typeid(*this).name(), __VA_ARGS__); }
+			{ spdlog::get(NOVA_DEFAULT_LOGGER_NAME)->level("[{}] {}", typeid(*this).name(), __VA_ARGS__, __FILE__, __LINE__); }
 
 	#define NOVA_TRACE(...) NOVA_LOG(trace, __VA_ARGS__)
 	

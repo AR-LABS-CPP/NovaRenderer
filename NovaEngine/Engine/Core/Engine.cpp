@@ -41,8 +41,8 @@ namespace Nova {
 		std::string modelPath = "Models/backpack/backpack.obj";
 		std::string cubePath = "Models/cube/cube.obj";
 
-		Nova::Model backpackModel(modelPath);
-		Nova::Model cubeModel(cubePath);
+		Nova::Model backpackModel(modelPath, 1);
+		Nova::Model cubeModel(cubePath, 2);
 
 		glm::vec3 lightDir(0.0f, 0.0f, -4.0f);
 
@@ -71,6 +71,9 @@ namespace Nova {
 		Nova::UI novaUi(&mainWindow);
 		novaUi.initializeUI();
 
+		std::unordered_map<GLuint, Model> models;
+		models[backpackModel.modelId] = backpackModel;
+
 		while(!mainWindow.windowShouldClose()) {
 			novaUi.createNewUIFrame();
 			sceneBuffer.bindBuffer(mainWindow.getWindowWidth(), mainWindow.getWindowHeight());
@@ -88,10 +91,12 @@ namespace Nova {
 			objectShader.setMat4("model", glm::mat4(1.0));
 
 			lightManager.applyDirectionalLight(objectShader, directionalLight, lightDir);
-			backpackModel.drawModel(objectShader, mainWindow.getWindowWidth(), mainWindow.getWindowHeight());
+			
+			for (auto& it : models) {
+				it.second.drawModel(objectShader, mainWindow.getWindowWidth(), mainWindow.getWindowHeight());
+			}
 
 			sceneBuffer.unbindBuffer();
-
 			novaUi.renderUIFrame(sceneBuffer);
 			mainWindow.swap();
 		}
@@ -103,6 +108,8 @@ namespace Nova {
 		EventBus::getInstance().subscribe<WindowResizeEvent>([this](Event& event) {
 			onWindowResize(event);
 		});
+
+		NOVA_INFO("Engine subsribed to events");
 	}
 
 	void Engine::shutdown() {

@@ -5,7 +5,9 @@
 #include "stb_image.h"
 
 namespace Nova {
-	Model::Model(std::string& path) {
+	Model::Model() : modelId(-1) {}
+	Model::Model(std::string& path, unsigned int id) {
+		modelId = id;
 		loadModel(path);
 	}
 

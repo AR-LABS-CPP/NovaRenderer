@@ -1,9 +1,14 @@
 #pragma once
 
-#include "Log/Log.h"
+#include "pch.h"
 #include "Model.h"
 #include "Window.h"
+#include "Log/Log.h"
 #include "Renderer/FrameBuffer.h"
+#include "Events/EventBus.h"
+#include <windows.h>
+#include <commdlg.h>
+#include <stdlib.h>
 
 namespace Nova {
 	class UI {
@@ -24,6 +29,9 @@ namespace Nova {
 		
 		bool wantsToCaptureMouse();
 		bool wantsToCaptureKeyboard();
+
+		std::string showFileDialog();
+		std::string convertWideString(const std::wstring& wstr);
 	private:
 		Window* attachedWindow;
 	};

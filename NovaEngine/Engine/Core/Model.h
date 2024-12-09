@@ -9,8 +9,10 @@ namespace Nova {
 		std::vector<Mesh> meshes;
 		std::string directory;
 		std::unordered_map<std::string, MeshTexture> textures_loaded;
+		unsigned int modelId;
 
-		Model(std::string& path);
+		Model();
+		Model(std::string& path, unsigned int id);
 
 		void drawModel(const Shader& shader, int width, int height);
 	private:

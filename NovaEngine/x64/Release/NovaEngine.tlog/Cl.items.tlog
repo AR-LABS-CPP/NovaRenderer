@@ -3,6 +3,7 @@ C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\DirectionalLight
 C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\Engine.obj
 C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Renderer\FrameBuffer.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\FrameBuffer.obj
 C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\glad.c;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\glad.obj
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\ModelManager.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\ModelManager.obj
 C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Vendor\ImGui\imgui.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\imgui.obj
 C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Vendor\ImGui\imgui_demo.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\imgui_demo.obj
 C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Vendor\ImGui\imgui_draw.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\imgui_draw.obj

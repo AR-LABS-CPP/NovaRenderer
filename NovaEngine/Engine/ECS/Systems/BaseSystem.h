@@ -6,6 +6,6 @@ namespace Nova {
 	class ISystem {
 	public:
 		virtual ~ISystem() = default;
-		virtual void update(float deltaTime, ComponentManager& componentManager) = 0;
+		virtual void update(float deltaTime) = 0;
 	};
 }

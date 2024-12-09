@@ -192,6 +192,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Engine\Core\ModelManager.cpp" />
     <ClCompile Include="Vendor\ImGui\imgui.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
@@ -304,31 +305,24 @@
     <ClInclude Include="Engine\Core\DirectionalLight.h" />
     <ClInclude Include="Engine\Core\Engine.h" />
     <ClInclude Include="Engine\ECS\Components\BaseComponent.h" />
-    <ClInclude Include="Engine\ECS\Components\Camera.h" />
     <ClInclude Include="Engine\ECS\Managers\ComponentManager.h" />
-    <ClInclude Include="Engine\ECS\Components\Light.h" />
-    <ClInclude Include="Engine\ECS\Components\Model.h" />
     <ClInclude Include="Engine\ECS\ECS.h" />
     <ClInclude Include="Engine\ECS\Entities\Entity.h" />
-    <ClInclude Include="Engine\ECS\Entities\EntityManager.h" />
+    <ClInclude Include="Engine\ECS\Managers\EntityManager.h" />
     <ClInclude Include="Engine\ECS\Managers\SystemManager.h" />
     <ClInclude Include="Engine\ECS\Systems\BaseSystem.h" />
-    <ClInclude Include="Engine\ECS\Systems\CameraSystem.h" />
-    <ClInclude Include="Engine\ECS\Systems\InputSystem.h" />
-    <ClInclude Include="Engine\ECS\Systems\LightSystem.h" />
-    <ClInclude Include="Engine\ECS\Systems\MaterialSystem.h" />
-    <ClInclude Include="Engine\ECS\Systems\MeshSystem.h" />
-    <ClInclude Include="Engine\ECS\Systems\ModelSystem.h" />
-    <ClInclude Include="Engine\ECS\Systems\RenderSystem.h" />
     <ClInclude Include="Engine\Events\EngineEvent.h" />
     <ClInclude Include="Engine\Events\Event.h" />
     <ClInclude Include="Engine\Events\EventBus.h" />
     <ClInclude Include="Engine\Events\KeyEvent.h" />
+    <ClInclude Include="Engine\Events\ModelEvent.h" />
     <ClInclude Include="Engine\Events\MouseEvent.h" />
     <ClInclude Include="Engine\Events\WindowEvent.h" />
     <ClInclude Include="Engine\Renderer\FrameBuffer.h" />
+    <ClInclude Include="Engine\Core\ModelManager.h" />
     <ClInclude Include="Vendor\ImGui\imconfig.h" />
     <ClInclude Include="Vendor\ImGui\imgui.h" />
+    <ClInclude Include="Vendor\ImGui\ImGuiFileDialog.h" />
     <ClInclude Include="Vendor\ImGui\imgui_impl_glfw.h" />
     <ClInclude Include="Vendor\ImGui\imgui_impl_opengl3.h" />
     <ClInclude Include="Vendor\ImGui\imgui_impl_opengl3_loader.h" />
