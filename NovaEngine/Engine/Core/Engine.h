@@ -10,11 +10,13 @@
 #include "Renderer/ShaderBuilder.h"
 #include "Model.h"
 #include "LightManager.h"
+#include "ModelManager.h"
 #include "Log/Log.h"
 #include "Renderer/FrameBuffer.h"
 #include "UI/UI.h"
 #include "Log/Logging.h"
 #include "Events/WindowEvent.h"
+#include "Events/ModelEvent.h"
 #include "Events/EventBus.h"
 
 namespace Nova {
@@ -28,9 +30,17 @@ namespace Nova {
 		void shutdown();
 	private:
 		Nova::LogManager logManager;
+		Nova::ModelManager modelManager;
 
 		void onWindowResize(Event& event) {
 			auto& resizeEvent = static_cast<WindowResizeEvent&>(event);
+		}
+
+		void onModelLoad(Event& event) {
+			auto& modelLoadEvent = static_cast<ModelSelectedEvent&>(event);
+
+			Model model(modelLoadEvent.getModelPath(), 0);
+			modelManager.addModel(model);
 		}
 	};
 }

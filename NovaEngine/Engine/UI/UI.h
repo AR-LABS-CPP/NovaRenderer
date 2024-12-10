@@ -6,6 +6,7 @@
 #include "Log/Log.h"
 #include "Renderer/FrameBuffer.h"
 #include "Events/EventBus.h"
+#include "Events/ModelEvent.h"
 #include <windows.h>
 #include <commdlg.h>
 #include <stdlib.h>

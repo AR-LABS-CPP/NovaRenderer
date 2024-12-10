@@ -71,6 +71,8 @@ uniform int nPointLights;
 uniform int nSpotLights;
 uniform int directionalLightActive;
 
+uniform bool hasTexture;
+
 vec3 calculateDirectionalLight(
     DirectionalLight directionaLight,
     vec3 normal,
@@ -127,9 +129,13 @@ vec3 calculateDirectionalLight(
 ) {
     vec3 lightDir = normalize(-directionalLight.direction);
 
+    // Default colors in case of no textures
+    vec3 baseDiffuseColor = vec3(1.0);
+    vec3 baseSpecularColor = vec3(0.5);
+
     // Sample textures once
-    vec3 textureDiffuse = vec3(texture(texture_diffuse1, TexCoords));
-    vec3 textureSpecular = vec3(texture(texture_specular1, TexCoords));
+    vec3 textureDiffuse = hasTexture ? vec3(texture(texture_diffuse1, TexCoords)) : baseDiffuseColor;
+    vec3 textureSpecular = hasTexture ? vec3(texture(texture_specular1, TexCoords)) : baseSpecularColor;
 
     // Diffuse
     float diff = max(dot(normal, lightDir), 0.0);
@@ -157,8 +163,12 @@ vec3 calculatePointLight(
 ) {
     vec3 lightDir = normalize(light.position - fragPos);
 
-    vec3 textureDiffuse = vec3(texture(texture_diffuse1, TexCoords));
-    vec3 textureSpecular = vec3(texture(texture_specular1, TexCoords));
+    // Default colors in case of no textures
+    vec3 baseDiffuseColor = vec3(1.0);
+    vec3 baseSpecularColor = vec3(0.5);
+
+    vec3 textureDiffuse = hasTexture ? vec3(texture(texture_diffuse1, TexCoords)) : baseDiffuseColor;
+    vec3 textureSpecular = hasTexture ? vec3(texture(texture_specular1, TexCoords)) : baseSpecularColor;
 
     // Diffuse
     float diff = max(dot(normal, lightDir), 0.0);
@@ -196,8 +206,12 @@ vec3 calculateSpotLight(
 ) { 
     vec3 lightDir = normalize(light.position - fragPos);
 
-    vec3 textureDiffuse = texture(texture_diffuse1, TexCoords).rgb;
-    vec3 textureSpecular = texture(texture_specular1, TexCoords).rgb;
+    // Default colors in case of no textures
+    vec3 baseDiffuseColor = vec3(1.0);
+    vec3 baseSpecularColor = vec3(0.5);
+
+    vec3 textureDiffuse = hasTexture ? vec3(texture(texture_diffuse1, TexCoords)) : baseDiffuseColor;
+    vec3 textureSpecular = hasTexture ? vec3(texture(texture_specular1, TexCoords)) : baseSpecularColor;
 
     // Diffuse
     float diff = max(dot(normal, lightDir), 0.0);

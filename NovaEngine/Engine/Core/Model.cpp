@@ -158,8 +158,15 @@ namespace Nova {
 		std::string& directory,
 		bool gamma
 	) {
+		std::string localDirectory = directory;
+
+		size_t lastSlash = localDirectory.find_last_of("\\/");
+		if (lastSlash != std::string::npos) {
+			localDirectory = localDirectory.substr(0, lastSlash);
+		}
+
 		std::string filename = path;
-		filename = directory + '/' + filename;
+		filename = localDirectory + '\\' + filename;
 
 		unsigned int textureID;
 		glGenTextures(1, &textureID);
@@ -204,7 +211,7 @@ namespace Nova {
 		}
 		else
 		{
-			std::cout << "Texture failed to load at path: " << path << std::endl;
+			NOVA_WARN("Texture failed to load at path: " + path + "; Reason: " + stbi_failure_reason());
 			stbi_image_free(data);
 		}
 

@@ -10,10 +10,11 @@ namespace Nova {
 		ModelManager() = default;
 		~ModelManager() = default;
 
-		void addModel(Model* model);
-		Model* getModel(unsigned int modelId);
+		void addModel(Model model);
+		Model getModel(unsigned int modelId);
+		std::vector<Model> getAllModels();
 		bool removeModel(unsigned int modelId);
 	private:
-		std::unordered_map<unsigned int, Model*> models;
+		std::unordered_map<unsigned int, Model> models;
 	};
 }

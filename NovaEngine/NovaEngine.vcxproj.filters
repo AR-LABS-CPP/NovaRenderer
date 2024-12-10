@@ -244,13 +244,8 @@
     <None Include="Shaders\Object\ObjectVertexShader.vert">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="Shaders\Axis\AxisVertexShader.vert">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="Shaders\Axis\AxisFragmentShader.frag">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="Shaders\Axis\AxisGeometryShader.geom" />
     <None Include="Vendor\ImGui\imgui.ini" />
+    <None Include="Shaders\Gizmo\GizmoVertexShader.vert" />
+    <None Include="Shaders\Gizmo\GizmoFragmentShader.frag" />
   </ItemGroup>
 </Project>

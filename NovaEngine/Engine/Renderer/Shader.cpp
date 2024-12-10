@@ -150,7 +150,7 @@ namespace Nova {
 		}
 
 		NOVA_INFO("A shader has been loaded from the disk");
-		NOVA_ASSERT(shaderCode.size() > 0, "Shader code is of size zero");
+		NOVA_ASSERT(shaderCode.size() != 0, "Shader code is of size zero");
 
 		return shaderCode;
 	}

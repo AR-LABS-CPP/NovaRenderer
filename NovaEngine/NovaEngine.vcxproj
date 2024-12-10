@@ -344,10 +344,9 @@
     <ClInclude Include="Engine\Core\Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Shaders\Gizmo\GizmoFragmentShader.frag" />
+    <None Include="Shaders\Gizmo\GizmoVertexShader.vert" />
     <None Include="Vendor\ImGui\imgui.ini" />
-    <None Include="Shaders\Axis\AxisFragmentShader.frag" />
-    <None Include="Shaders\Axis\AxisGeometryShader.geom" />
-    <None Include="Shaders\Axis\AxisVertexShader.vert" />
     <None Include="Shaders\Background\Gradient\GradientFragmentShader.frag" />
     <None Include="Shaders\Background\Gradient\GradientVertexShader.vert" />
     <None Include="Shaders\LightSource\LightSourceFragmentShader.frag" />

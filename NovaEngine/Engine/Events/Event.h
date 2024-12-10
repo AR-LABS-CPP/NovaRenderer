@@ -35,6 +35,7 @@ namespace Nova {
 		MouseMoved,
 		MouseScrolled,
 
+		ModelSelected,
 		ModelLoaded,
 		ModelUnloaded,
 		ModelTranslated,

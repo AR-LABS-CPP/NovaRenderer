@@ -16,19 +16,19 @@
 #ifndef NOVA_CONFIG_RELEASE
 	#define NOVA_LOG(level, ...) \
 		if(spdlog::get(NOVA_DEFAULT_LOGGER_NAME)) \
-			{ spdlog::get(NOVA_DEFAULT_LOGGER_NAME)->level("[{}] {}", typeid(*this).name(), __VA_ARGS__, __FILE__, __LINE__); }
+			{ spdlog::get(NOVA_DEFAULT_LOGGER_NAME)->level("[{}] {}\n\tfile:{}\n\tline: {}", typeid(*this).name(), __VA_ARGS__); }
 
-	#define NOVA_TRACE(...) NOVA_LOG(trace, __VA_ARGS__)
+	#define NOVA_TRACE(...) NOVA_LOG(trace, __VA_ARGS__, __FILE__, __LINE__)
 	
-	#define NOVA_DEBUG(...) NOVA_LOG(debug, __VA__ARGS__)
+	#define NOVA_DEBUG(...) NOVA_LOG(debug, __VA__ARGS__, __FILE__, __LINE__)
 	
-	#define NOVA_INFO(...)	NOVA_LOG(info, __VA_ARGS__)
+	#define NOVA_INFO(...)	NOVA_LOG(info, __VA_ARGS__, __FILE__, __LINE__)
 	
-	#define NOVA_WARN(...)	NOVA_LOG(warn, __VA_ARGS__)
+	#define NOVA_WARN(...)	NOVA_LOG(warn, __VA_ARGS__, __FILE__, __LINE__)
 	
-	#define NOVA_ERROR(...) NOVA_LOG(error, __VA_ARGS__)
+	#define NOVA_ERROR(...) NOVA_LOG(error, __VA_ARGS__, __FILE__, __LINE__)
 	
-	#define NOVA_FATAL(...) NOVA_LOG(critical, __VA_ARGS__)
+	#define NOVA_FATAL(...) NOVA_LOG(critical, __VA_ARGS__, __FILE__, __LINE__)
 
 	#define NOVA_ASSERT(x, msg) if ((x)) {} else { NOVA_FATAL("ASSERTION FAILED - {}\n\t{}\n\tin file: {}\n\ton line: {}", #x, msg, __FILE__, __LINE__); NOVA_BREAK_DEBUG }
 #else

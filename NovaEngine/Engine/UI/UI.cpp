@@ -108,7 +108,7 @@ namespace Nova {
 		if (ImGui::Begin("Options", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize)) {
 			ImGuiIO& io = ImGui::GetIO();
 			float frameTimeMs = 1000.0f / io.Framerate;
-
+			
 			ImGui::Text("Application Stats:");
 			ImGui::Text("FPS: %.1f", io.Framerate);
 			ImGui::Text("Frame Time: %.3f ms/frame", frameTimeMs);
@@ -122,7 +122,10 @@ namespace Nova {
 
 			if (loadModelPressed) {
 				std::string filePath = showFileDialog();
-				NOVA_FATAL(filePath.size() != 0, "Model file path cannot be zero or empty");
+				NOVA_ASSERT(filePath.size() != 0, "Model file path cannot be zero or empty");
+
+				ModelSelectedEvent modelSelectedEvent(filePath);
+				EventBus::getInstance().dispatch(modelSelectedEvent);
 
 				loadModelPressed = false;
 			}
@@ -264,7 +267,7 @@ namespace Nova {
 			auto locale = std::setlocale(LC_ALL, "en_US.utf8");
 			NOVA_ASSERT(locale != nullptr, "Locale must be set before converting wide char to string");
 			std::string convertedFileName = convertWideString(openFileName.lpstrFile);
-			
+
 			return convertedFileName;
 		}
 
@@ -285,7 +288,7 @@ namespace Nova {
 			int bytesWritten = 0;
 			errno_t err = wctomb_s(&bytesWritten, buffer.data(), buffer.size(), wc);
 			
-			NOVA_ASSERT(err == 0 || bytesWritten == 0, "Characters must be in multi-byte");
+			NOVA_ASSERT(err == 0 || bytesWritten != 0, "Characters must be in multi-byte");
 			result.append(buffer.data(), bytesWritten);
 		}
 

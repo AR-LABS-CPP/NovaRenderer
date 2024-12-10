@@ -19,24 +19,31 @@ namespace Nova {
 		GLuint specularNr = 1;
 		GLuint normalNr = 1;
 
-		for (unsigned int idx = 0; idx < textures.size(); idx++) {
-			glActiveTexture(GL_TEXTURE0 + idx);
+		if (textures.size() > 0) {
+			shader.setBool("hasTexture", true);
 
-			std::string number;
-			std::string name = textures[idx].type;
+			for (unsigned int idx = 0; idx < textures.size(); idx++) {
+				glActiveTexture(GL_TEXTURE0 + idx);
 
-			if (name == "texture_diffuse") {
-				number = std::to_string(diffuseNr++);
-			}
-			else if (name == "texture_specular") {
-				number = std::to_string(specularNr++);
-			}
-			else if (name == "texture_normal") {
-				number = std::to_string(normalNr++);
-			}
+				std::string number;
+				std::string name = textures[idx].type;
 
-			shader.setInt((name + number).c_str(), idx);
-			glBindTexture(GL_TEXTURE_2D, textures[idx].id);
+				if (name == "texture_diffuse") {
+					number = std::to_string(diffuseNr++);
+				}
+				else if (name == "texture_specular") {
+					number = std::to_string(specularNr++);
+				}
+				else if (name == "texture_normal") {
+					number = std::to_string(normalNr++);
+				}
+
+				shader.setInt((name + number).c_str(), idx);
+				glBindTexture(GL_TEXTURE_2D, textures[idx].id);
+			}
+		}
+		else {
+			shader.setBool("hasTexture", false);
 		}
 
 		glBindVertexArray(VAO);
@@ -97,7 +104,7 @@ namespace Nova {
 		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, width, height);
 		glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, RBO);
 
-		NOVA_ASSERT(glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE, "Framebuffer must be complete");
+		NOVA_ASSERT(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE, "Framebuffer must be complete");
 
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	}
