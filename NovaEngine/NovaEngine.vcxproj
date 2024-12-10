@@ -317,6 +317,7 @@
     <ClInclude Include="Engine\Events\EngineEvent.h" />
     <ClInclude Include="Engine\Events\Event.h" />
     <ClInclude Include="Engine\Events\EventBus.h" />
+    <ClInclude Include="Engine\Events\EventQueue.h" />
     <ClInclude Include="Engine\Events\KeyEvent.h" />
     <ClInclude Include="Engine\Events\LightEvent.h" />
     <ClInclude Include="Engine\Events\MaterialEvent.h" />

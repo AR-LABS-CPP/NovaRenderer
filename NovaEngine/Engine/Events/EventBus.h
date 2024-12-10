@@ -1,11 +1,6 @@
 #pragma once
-#include <vector>
-#include <functional>
-#include <unordered_map>
-#include <typeindex>
-#include <memory>
-#include <mutex>
-#include <iostream>
+
+#include "pch.h"
 #include "Event.h"
 
 namespace Nova {

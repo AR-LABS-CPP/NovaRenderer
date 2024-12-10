@@ -242,6 +242,9 @@
     <ClInclude Include="Engine\Events\CameraEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Events\EventQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\LightSource\LightSourceFragmentShader.frag">

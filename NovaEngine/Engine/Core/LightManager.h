@@ -4,6 +4,8 @@
 #include "PointLight.h"
 #include "SpotLight.h"
 #include "Renderer/Shader.h"
+#include "Events/LightEvent.h"
+#include "Events/EventBus.h"
 
 namespace Nova {
 	class LightManager {
@@ -12,14 +14,15 @@ namespace Nova {
 		static GLint currNoOfSpotLights;
 		static bool isDirectionalLightActive;
 
-		LightManager();
+		LightManager(Shader& shader);
 		~LightManager();
 
-		void applyDirectionalLight(Shader& shader, DirectionalLight& dirLight, glm::vec3 direction);
-		void applyPointLights(Shader& shader, std::vector<PointLight>& pointLights, glm::vec3& position);
-		void applySpotLights(Shader& shader, std::vector<SpotLight>& spotLights, glm::vec3 position, glm::vec3 direction);
+		void applyDirectionalLight(DirectionalLight& dirLight, glm::vec3 direction);
+		void applyPointLights(std::vector<PointLight>& pointLights, glm::vec3& position);
+		void applySpotLights(std::vector<SpotLight>& spotLights, glm::vec3 position, glm::vec3 direction);
 	private:
 		GLint maxPointLights;
 		GLint maxSpotLights;
+		Shader attachedShader;
 	};
 }
