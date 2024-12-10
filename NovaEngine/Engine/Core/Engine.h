@@ -18,6 +18,7 @@
 #include "Events/WindowEvent.h"
 #include "Events/ModelEvent.h"
 #include "Events/EventBus.h"
+#include "Events/EventQueue.h"
 #include "Gizmo.h"
 
 namespace Nova {

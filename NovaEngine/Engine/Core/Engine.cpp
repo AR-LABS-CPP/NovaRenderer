@@ -3,6 +3,7 @@
 
 namespace Nova {
 	void Engine::initializeAndRun() {
+		initializeLogger();
 		subscribeToEvents();
 
 		Window mainWindow;
@@ -31,7 +32,6 @@ namespace Nova {
 		while(!mainWindow.windowShouldClose()) {
 			novaUi.createNewUIFrame();
 			sceneBuffer.bindBuffer(mainWindow.getWindowWidth(), mainWindow.getWindowHeight());
-			
 			mainWindow.update(glm::vec4(0.2f, 0.2f, 0.2f, 1.0f));
 
 			objectShader.setInt("nPointLights", 0);
@@ -45,6 +45,8 @@ namespace Nova {
 			objectShader.setMat4("model", glm::mat4(1.0));
 
 			renderAllModels(modelManager.getAllModels(), objectShader, mainWindow);
+
+			EventQueue::getInstance().process();
 
 			sceneBuffer.unbindBuffer();
 			novaUi.renderUIFrame(sceneBuffer);
