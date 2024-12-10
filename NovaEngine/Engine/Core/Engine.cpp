@@ -5,69 +5,34 @@ namespace Nova {
 	void Engine::initializeAndRun() {
 		subscribeToEvents();
 
-		logManager = Nova::LogManager();
-		logManager.initialize();
+		Window mainWindow;
+		initializeWindow(mainWindow);
+		
+		Camera camera = initializeCamera(mainWindow);
 
-		NOVA_INFO("Logger initialized");
-
-		Nova::Window mainWindow;
-		if (!mainWindow.setupWindow()) {
-			NOVA_ERROR("Failed to create GLFW window!");
-		}
-
-		Nova::Shader objectShader = Nova::ShaderBuilder()
+		Shader objectShader = ShaderBuilder()
 			.withVertexShader("Shaders/Object/ObjectVertexShader.vert")
 			.withFragmentShader("Shaders/Object/ObjectFragmentShader.frag")
 			.buildShader();
+
+		Shader gizmoShader = ShaderBuilder()
+			.withVertexShader("Shaders/Gizmo/GizmoVertexShader.vert")
+			.withFragmentShader("Shaders/Gizmo/GizmoFragmentShader.frag")
+			.buildShader();
 		
-		int windowWidth = mainWindow.getWindowWidth();
-		int windowHeight = mainWindow.getWindowHeight();
-
-		Nova::Camera camera(
-			-90.0f,
-			0.0f,
-			windowWidth / 2,
-			windowHeight / 2,
-			0.6f,
-			2.5f,
-			45.0f,
-			windowWidth / windowHeight,
-			windowWidth,
-			windowHeight
-		);
-
-		glm::vec3 lightDir(0.0f, 0.0f, -4.0f);
-
-		Nova::DirectionalLight directionalLight(
-			lightDir
-		);
-
-		std::vector<Nova::SpotLight> spotLights;
-
-		Nova::SpotLight spotLight(
-			camera.getCameraPosition(),
-			camera.getCameraFront()
-		);
-
-		spotLights.push_back(spotLight);
-
-		Nova::LightManager lightManager;
-
-		NOVA_INFO("Engine initialized");
-
 		FrameBuffer sceneBuffer(
-			windowWidth,
-			windowHeight
+			mainWindow.getWindowWidth(),
+			mainWindow.getWindowHeight()
 		);
 		
-		Nova::UI novaUi(&mainWindow);
+		UI novaUi(&mainWindow);
 		novaUi.initializeUI();
 
 		while(!mainWindow.windowShouldClose()) {
 			novaUi.createNewUIFrame();
 			sceneBuffer.bindBuffer(mainWindow.getWindowWidth(), mainWindow.getWindowHeight());
 			
-			mainWindow.update(glm::vec4(0.1f, 0.1f, 0.1f, 1.0f));
+			mainWindow.update(glm::vec4(0.2f, 0.2f, 0.2f, 1.0f));
 
 			objectShader.setInt("nPointLights", 0);
 			objectShader.setInt("nSpotLights", 0);
@@ -79,14 +44,7 @@ namespace Nova {
 			objectShader.setMat4("view", camera.getViewMatrix());
 			objectShader.setMat4("model", glm::mat4(1.0));
 
-			lightManager.applyDirectionalLight(objectShader, directionalLight, lightDir);
-			// lightManager.applySpotLights(objectShader, spotLights, camera.getCameraPosition(), camera.getCameraFront());
-
-			if (modelManager.getAllModels().size() > 0) {
-				for (auto& it : modelManager.getAllModels()) {
-					it.drawModel(objectShader, mainWindow.getWindowWidth(), mainWindow.getWindowHeight());
-				}
-			}
+			renderAllModels(modelManager.getAllModels(), objectShader, mainWindow);
 
 			sceneBuffer.unbindBuffer();
 			novaUi.renderUIFrame(sceneBuffer);
@@ -94,6 +52,55 @@ namespace Nova {
 		}
 
 		novaUi.shutdownUI();
+	}
+
+	void Engine::initializeLogger() {
+		logManager = LogManager();
+		logManager.initialize();
+
+		NOVA_INFO("Logger initialized");
+	}
+
+	void Engine::initializeWindow(Window& window) {
+		if (!window.setupWindow()) {
+			NOVA_ERROR("Failed to create GLFW window!");
+		}
+
+		NOVA_INFO("Main window initialized");
+	}
+
+	void Engine::initializeDefaultShaders() {}
+
+	Camera Engine::initializeCamera(Window& window) {
+		int width = window.getWindowWidth();
+		int height = window.getWindowHeight();
+
+		Camera camera(
+			-90.0f,
+			0.0f,
+			width / 2,
+			height / 2,
+			0.6f,
+			2.5f,
+			45.0f,
+			width / height,
+			width,
+			height
+		);
+
+		NOVA_INFO("Main camera initialized");
+
+		return camera;
+	}
+
+	void Engine::initializeDefaultLights() {}
+
+	void Engine::renderAllModels(std::vector<Model> allModels, Shader& objectShader, Window& mainWindow) {
+		if (allModels.size() > 0) {
+			for (auto& it : allModels) {
+				it.drawModel(objectShader, mainWindow.getWindowWidth(), mainWindow.getWindowHeight());
+			}
+		}
 	}
 
 	void Engine::subscribeToEvents() {

@@ -3,7 +3,11 @@
 
 namespace Nova {
 	LightManager::LightManager()
-		: maxPointLights(MAX_POINT_LIGHTS), maxSpotLights(MAX_SPOT_LIGHTS) {}
+		: maxPointLights(MAX_POINT_LIGHTS), maxSpotLights(MAX_SPOT_LIGHTS) {
+		LightManager::currNoOfSpotLights = 0;
+		LightManager::currNoOfPointLights = 0;
+		LightManager::isDirectionalLightActive = false;
+	}
 	
 	LightManager::~LightManager() {}
 

@@ -226,4 +226,8 @@ namespace Nova {
 	void Window::setWindowHeight(int newHeight) {
 		windowHeight = newHeight;
 	}
+
+	GLdouble Window::getDeltaTime() {
+		return deltaTime;
+	}
 }

@@ -18,6 +18,7 @@
 #include "Events/WindowEvent.h"
 #include "Events/ModelEvent.h"
 #include "Events/EventBus.h"
+#include "Gizmo.h"
 
 namespace Nova {
 	class Engine {
@@ -28,9 +29,18 @@ namespace Nova {
 		void initializeAndRun();
 		void subscribeToEvents();
 		void shutdown();
+
+		void initializeLogger();
+		void initializeWindow(Window& window);
+		void initializeDefaultShaders();
+		
+		Camera initializeCamera(Window& window);
+		
+		void initializeDefaultLights();
+		void renderAllModels(std::vector<Model> allModels, Shader& objectShader, Window& mainWindow);
 	private:
-		Nova::LogManager logManager;
-		Nova::ModelManager modelManager;
+		LogManager logManager;
+		ModelManager modelManager;
 
 		void onWindowResize(Event& event) {
 			auto& resizeEvent = static_cast<WindowResizeEvent&>(event);

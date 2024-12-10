@@ -33,6 +33,19 @@ namespace Nova {
 
 		std::string showFileDialog();
 		std::string convertWideString(const std::wstring& wstr);
+
+		ImGuiWindowFlags addDockSpaceFlags();
+		ImGuiID addDockSpace();
+		void initializeDockSpace(ImGuiWindowFlags dockspaceFlags, ImGuiID dockspaceId);
+
+		void drawFPSAndMs();
+		void addModelOptions();
+		void addLightingOptions();
+		void addColorOption();
+		void addGizmoOptions();
+		void addMaterialOptions();
+		void addCameraOptions();
+		void addGlobalOptions();
 	private:
 		Window* attachedWindow;
 	};

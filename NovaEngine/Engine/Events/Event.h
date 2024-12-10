@@ -71,7 +71,11 @@ namespace Nova {
 		EventCatMouse = BIT(4),
 		EventCatMouseButton = BIT(5),
 		EventCatWindow = BIT(6),
-		EventCatModel = BIT(7)
+		EventCatModel = BIT(7),
+		EventCatMaterial = BIT(8),
+		EventCatColor = BIT(9),
+		EventCatLight = BIT(10),
+		EventCatCamera = BIT(11)
 	};
 
 	class Event {

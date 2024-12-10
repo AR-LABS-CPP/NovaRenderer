@@ -32,6 +32,8 @@ namespace Nova {
 
 		void setWindowWidth(int newWidth);
 		void setWindowHeight(int newHeight);
+
+		GLdouble getDeltaTime();
 	private:
 		GLFWwindow* mainWindow;
 		GLuint windowWidth, windowHeight;

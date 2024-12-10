@@ -2,6 +2,8 @@ C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Camera.cpp;C:\Us
 C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\DirectionalLight.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\DirectionalLight.obj
 C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\Engine.obj
 C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Renderer\FrameBuffer.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\FrameBuffer.obj
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Gizmo.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\Gizmo.obj
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\UI\UI.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\UI.obj
 C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\glad.c;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\glad.obj
 C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\ModelManager.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\ModelManager.obj
 C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Vendor\ImGui\imgui.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\imgui.obj
@@ -23,5 +25,4 @@ C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\PointLight.cpp;C
 C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Renderer\Shader.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\Shader.obj
 C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Renderer\ShaderBuilder.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\ShaderBuilder.obj
 C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\SpotLight.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\SpotLight.obj
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\UI\UI.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\UI.obj
 C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Window.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\Window.obj
