@@ -1,5 +1,6 @@
 #pragma once
 
+#include <filesystem>
 #include "Renderer/Shader.h"
 #include "Mesh.h"
 
@@ -32,5 +33,8 @@ namespace Nova {
 			aiTextureType type,
 			std::string typeName
 		);
+		
+		std::string fallbackTexturePath = std::filesystem::current_path().string();
+		std::string getLocalDirectory(std::string& directory);
 	};
 }

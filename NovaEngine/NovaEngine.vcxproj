@@ -195,6 +195,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Engine\Core\ModelManager.cpp" />
+    <ClCompile Include="Engine\UI\LightManagerUI.cpp" />
     <ClCompile Include="Vendor\ImGui\imgui.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
@@ -327,6 +328,8 @@
     <ClInclude Include="Engine\Renderer\FrameBuffer.h" />
     <ClInclude Include="Engine\Core\ModelManager.h" />
     <ClInclude Include="Engine\Core\Gizmo.h" />
+    <ClInclude Include="Engine\Structs\LightStructs.h" />
+    <ClInclude Include="Engine\UI\LightManagerUI.h" />
     <ClInclude Include="Vendor\ImGui\imconfig.h" />
     <ClInclude Include="Vendor\ImGui\imgui.h" />
     <ClInclude Include="Vendor\ImGui\ImGuiFileDialog.h" />

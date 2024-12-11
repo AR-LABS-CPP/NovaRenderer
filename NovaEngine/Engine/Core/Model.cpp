@@ -153,11 +153,7 @@ namespace Nova {
 		return Mesh(vertices, indices, textures);
 	}
 
-	unsigned int Model::textureFromFile(
-		std::string path,
-		std::string& directory,
-		bool gamma
-	) {
+	std::string Model::getLocalDirectory(std::string& directory) {
 		std::string localDirectory = directory;
 
 		size_t lastSlash = localDirectory.find_last_of("\\/");
@@ -165,6 +161,15 @@ namespace Nova {
 			localDirectory = localDirectory.substr(0, lastSlash);
 		}
 
+		return localDirectory;
+	}
+
+	unsigned int Model::textureFromFile(
+		std::string path,
+		std::string& directory,
+		bool gamma
+	) {
+		std::string localDirectory = getLocalDirectory(directory);
 		std::string filename = path;
 		filename = localDirectory + '\\' + filename;
 
@@ -237,29 +242,12 @@ namespace Nova {
 			}
 			else {
 				MeshTexture texture;
-				texture.id = textureFromFile(str.C_Str(), directory);
+				texture.id = textureFromFile(texturePath, directory);
 				texture.type = typeName;
-				texture.path = str.C_Str();
+				texture.path = texturePath;
 				textures.push_back(texture);
 				textures_loaded[texturePath] = texture;
 			}
-
-			/*for (unsigned int innerIdx = 0; innerIdx < textures_loaded.size(); innerIdx++) {
-				if (std::strcmp(textures_loaded[innerIdx].path.data(), str.C_Str()) == 0) {
-					textures.push_back(textures_loaded[innerIdx]);
-					skip = true;
-					break;
-				}
-			}*/
-
-			/*if (!skip) {
-				MeshTexture texture;
-				texture.id = textureFromFile(str.C_Str(), directory);
-				texture.type = typeName;
-				texture.path = str.C_Str();
-				textures.push_back(texture);
-				textures_loaded.push_back(texture);
-			}*/
 		}
 
 		return textures;

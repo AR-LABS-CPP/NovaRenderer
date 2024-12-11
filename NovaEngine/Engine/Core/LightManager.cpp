@@ -16,12 +16,12 @@ namespace Nova {
 	LightManager::~LightManager() {}
 
 	void LightManager::applyDirectionalLight() {
-		if (isDirectionalLightActive) {
-			dirLight.directionalLight.applyLighting(attachedShader, 0);
+		attachedShader.setBool("directionalLightActive", dirLight.isActive);
+
+		if (dirLight.isActive && dirLight.hasChanged) { 
 			dirLight.directionalLight.setDirection(dirLight.direction);
-		}
-		else {
-			attachedShader.setBool("directionalLightActive", false);
+			dirLight.directionalLight.applyLighting(attachedShader, 0);
+			dirLight.resetChangeFlag();
 		}
 	}
 
@@ -72,26 +72,24 @@ namespace Nova {
 	void LightManager::onDirectionalLightAdded(Event& event) {
 		auto& directionalLightAddedEvent = static_cast<DirectionalLightAddedEvent&>(event);
 
-		if (isDirectionalLightActive) {
+		if (dirLight.isActive) {
 			NOVA_WARN("Directional light is already active");
 			return;
 		}
 
-		isDirectionalLightActive = true;
-		applyDirectionalLight();
-
+		dirLight.toggleActive();
 		NOVA_INFO("Directional light is active");
 	}
 	
 	void LightManager::onDirectionalLightRemoved(Event& event) {
 		auto& directionalLightRemovedEvent = static_cast<DirectionalLightRemovedEvent&>(event);
 
-		if (!isDirectionalLightActive) {
+		if (!dirLight.isActive) {
 			NOVA_WARN("Directional light is not active");
 			return;
 		}
 
-		isDirectionalLightActive = false;
+		dirLight.toggleActive();
 		NOVA_INFO("Directional light deactivated");
 	}
 
