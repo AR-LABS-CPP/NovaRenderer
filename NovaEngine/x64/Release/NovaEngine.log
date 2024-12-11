@@ -5,27 +5,28 @@ C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(26,30
 C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(25,29): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(34,82): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(36,82): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(34,52): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(36,52): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(90,4): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(93,4): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(89,4): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(92,4): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(88,10): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(91,10): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(84,11): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(87,11): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(83,10): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(86,10): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
+  LightManager.cpp
   main.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(130,9): warning C4005: 'APIENTRY': macro redefinition
   (compiling source file 'main.cpp')
@@ -33,8 +34,7 @@ C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(1
       see previous definition of 'APIENTRY'
   
   Generating code
-  0 of 8233 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+  Previous IPDB and IOBJ mismatch, fall back to full compilation.
+  All 8874 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
   NovaEngine.vcxproj -> C:\Users\AR-LABS\source\repos\NovaEngine\x64\Release\NovaEngine.exe

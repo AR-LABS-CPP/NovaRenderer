@@ -29,6 +29,8 @@ namespace Nova {
 		UI novaUi(&mainWindow);
 		novaUi.initializeUI();
 
+		LightManager lightManager(objectShader);
+
 		while(!mainWindow.windowShouldClose()) {
 			novaUi.createNewUIFrame();
 			sceneBuffer.bindBuffer(mainWindow.getWindowWidth(), mainWindow.getWindowHeight());
@@ -44,6 +46,7 @@ namespace Nova {
 			objectShader.setMat4("view", camera.getViewMatrix());
 			objectShader.setMat4("model", glm::mat4(1.0));
 
+			lightManager.applyAllLights();
 			renderAllModels(modelManager.getAllModels(), objectShader, mainWindow);
 
 			EventQueue::getInstance().process();

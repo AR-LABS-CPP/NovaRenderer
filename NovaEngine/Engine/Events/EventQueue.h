@@ -3,6 +3,11 @@
 #include "pch.h"
 #include "Event.h"
 
+/*
+    Please note that I don't like smart pointers
+    but I had to use them here cause of no other
+    choice.
+*/
 namespace Nova {
     class EventQueue {
     public:
@@ -22,29 +27,24 @@ namespace Nova {
             mHandlers[typeIndex].push_back(handler);
         }
 
-        void enqueue(Event* event) {
-            eventQueue.push(event);
+        void enqueue(std::unique_ptr<Event> event) {
+            eventQueue.push(std::move(event));
         }
 
         void process() {
             while (!eventQueue.empty()) {
-                auto event = eventQueue.front();
+                auto& event = eventQueue.front();
                 dispatch(*event);
                 eventQueue.pop();
             }
         }
 
-        ~EventQueue() {
-            while (!eventQueue.empty()) {
-                delete eventQueue.front();
-                eventQueue.pop();
-            }
-        }
+        ~EventQueue() = default;
 
     private:
         EventQueue() = default;
 
-        std::queue<Event*> eventQueue;
+        std::queue<std::unique_ptr<Event>> eventQueue;
         std::unordered_map<std::type_index, std::vector<EventHandler>> mHandlers;
 
         void dispatch(Event& event) {

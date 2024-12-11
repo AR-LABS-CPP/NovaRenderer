@@ -2,6 +2,8 @@
 #include "UI.h"
 
 namespace Nova {
+	bool UI::directionalLightActive = false;
+
 	UI::UI(Window* currentWindow) {
 		attachedWindow = currentWindow;
 	}
@@ -251,14 +253,22 @@ namespace Nova {
 
 	void UI::addLightingOptions() {
 		ImGui::Text("Lighting Options");
-		if (ImGui::Button("Add Directional Light", ImVec2(-1, 0))) {
-			// TODO: implement the logic
+		if (ImGui::Checkbox("Add Directional Light", &directionalLightActive)) {
+			std::cout << directionalLightActive << std::endl;
+			
+			if (directionalLightActive == 0) {
+				evtQueue.enqueue(std::make_unique<DirectionalLightRemovedEvent>());
+			}
+			else {
+				evtQueue.enqueue(std::make_unique<DirectionalLightAddedEvent>());
+			}
 		}
+
 		if (ImGui::Button("Add Spot Light", ImVec2(-1, 0))) {
-			// TODO: implement the logic
+			evtQueue.enqueue(std::make_unique<SpotLightAddedEvent>());
 		}
 		if (ImGui::Button("Add Point Light", ImVec2(-1, 0))) {
-			// TODO: implement the logic
+			evtQueue.enqueue(std::make_unique<PointLightAddedEvent>());
 		}
 
 		static ImVec4 lightColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);

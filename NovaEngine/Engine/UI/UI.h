@@ -6,6 +6,8 @@
 #include "Log/Log.h"
 #include "Renderer/FrameBuffer.h"
 #include "Events/EventBus.h"
+#include "Events/EventQueue.h"
+#include "Events/LightEvent.h"
 #include "Events/ModelEvent.h"
 #include <windows.h>
 #include <commdlg.h>
@@ -14,6 +16,8 @@
 namespace Nova {
 	class UI {
 	public:
+		static bool directionalLightActive;
+
 		UI() = delete;
 		UI(Window* currWindow);
 		~UI() = default;
@@ -48,5 +52,7 @@ namespace Nova {
 		void addGlobalOptions();
 	private:
 		Window* attachedWindow;
+		
+		EventQueue& evtQueue = EventQueue::getInstance();
 	};
 }

@@ -8,8 +8,9 @@ namespace Nova {
 
 	LightManager::LightManager(Shader& shader)
 		: maxPointLights(MAX_POINT_LIGHTS), maxSpotLights(MAX_SPOT_LIGHTS) {
+		subscribeToEvents();
+
 		attachedShader = shader;
-		dirLight.directionalLight = DirectionalLight();
 	}
 	
 	LightManager::~LightManager() {}
@@ -18,6 +19,9 @@ namespace Nova {
 		if (isDirectionalLightActive) {
 			dirLight.directionalLight.applyLighting(attachedShader, 0);
 			dirLight.directionalLight.setDirection(dirLight.direction);
+		}
+		else {
+			attachedShader.setBool("directionalLightActive", false);
 		}
 	}
 
@@ -39,6 +43,30 @@ namespace Nova {
 		applyDirectionalLight();
 		applyPointLights();
 		applySpotLights();
+	}
+
+	void LightManager::subscribeToEvents() {
+		evtQueue.subscribe<DirectionalLightAddedEvent>([this](Event& event) {
+			onDirectionalLightAdded(event);
+		});
+
+		evtQueue.subscribe<DirectionalLightRemovedEvent>([this](Event& event) {
+			onDirectionalLightRemoved(event);
+		});
+
+		evtQueue.subscribe<SpotLightAddedEvent>([this](Event& event) {
+			onSpotLightAdded(event);
+		});
+
+		evtQueue.subscribe<SpotLightRemovedEvent>([this](Event& event) {});
+
+		evtQueue.subscribe<PointLightAddedEvent>([this](Event& event) {
+			onPointLightAdded(event);
+		});
+
+		evtQueue.subscribe<PointLightRemovedEvent>([this](Event& event) {});
+
+		NOVA_INFO("LightManager subscribed to events");
 	}
 
 	void LightManager::onDirectionalLightAdded(Event& event) {
