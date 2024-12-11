@@ -3,34 +3,25 @@
 
 namespace Nova {
 	LightManagerUI::LightManagerUI(
-		std::unordered_map<GLint, SpotLightStruct>& spotLights,
-		std::unordered_map<GLint, PointLightStruct>& pointLights,
-		std::vector<std::string>& spotLightTableCols,
-		std::vector<std::string>& pointLightTableCols
-	) : spotLights(spotLights), pointLights(pointLights),
-		spotLightTableCols(spotLightTableCols), pointLightTableCols(pointLightTableCols) {}
+		LightManager& lightManager
+	) : lightManager(lightManager) {}
 
-	void LightManagerUI::setupTableColumns(const std::vector<std::string>& colNames) {
-		for (const auto& colName : colNames) {
-			ImGui::TableSetupColumn(colName.c_str(), ImGuiTableColumnFlags_WidthFixed);
+	void LightManagerUI::drawLightsUI() {
+		if (ImGui::Begin("Lights Manager")) {
+			auto& spotLights = lightManager.getSpotLigts();
+			auto& pointLights = lightManager.getPointLights();
+
+			for (auto& [id, sl] : spotLights) {
+				ImGui::PushID(id);
+				if (ImGui::CollapsingHeader(("Spot Light " + std::to_string(id)).c_str())) {
+					ImGui::DragFloat3("Position", glm::value_ptr(sl.spotLight.position), 0.1f);
+					ImGui::DragFloat3("Direction", glm::value_ptr(sl.spotLight.direction), 0.1f);
+					ImGui::ColorEdit3("Color", glm::value_ptr(sl.spotLight.color));
+				}
+				ImGui::PopID();
+			}
 		}
 
-		ImGui::TableHeadersRow();
-	}
-
-	void LightManagerUI::drawSpotLightTable() {
-		if (ImGui::BeginTable("SpotLights", spotLightTableCols.size(), LightNode::flags)) {
-			setupTableColumns(spotLightTableCols);
-
-			ImGui::EndTable();
-		}
-	}
-	
-	void LightManagerUI::drawPointLightTable() {
-		if (ImGui::BeginTable("Point Lights", pointLightTableCols.size(), LightNode::flags)) {
-			setupTableColumns(pointLightTableCols);
-
-			ImGui::EndTable();
-		}
+		ImGui::End();
 	}
 }

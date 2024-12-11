@@ -30,6 +30,7 @@ namespace Nova {
 		novaUi.initializeUI();
 
 		LightManager lightManager(objectShader);
+		LightManagerUI lightManagerUI(lightManager);
 
 		while(!mainWindow.windowShouldClose()) {
 			novaUi.createNewUIFrame();
@@ -53,6 +54,7 @@ namespace Nova {
 
 			sceneBuffer.unbindBuffer();
 			novaUi.renderUIFrame(sceneBuffer);
+			lightManagerUI.drawLightsUI();
 			mainWindow.swap();
 		}
 

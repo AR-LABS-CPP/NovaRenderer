@@ -105,6 +105,9 @@
     <ClCompile Include="Engine\UI\LightManagerUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Renderer\ShaderManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\Window.h">
@@ -254,6 +257,15 @@
     <ClInclude Include="Engine\Structs\LightStructs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Renderer\ShaderManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\nlohmann\json.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\nlohmann\json_fwd.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\LightSource\LightSourceFragmentShader.frag">
@@ -277,5 +289,6 @@
     <None Include="Vendor\ImGui\imgui.ini" />
     <None Include="Shaders\Gizmo\GizmoVertexShader.vert" />
     <None Include="Shaders\Gizmo\GizmoFragmentShader.frag" />
+    <None Include="Shaders\shaders.json" />
   </ItemGroup>
 </Project>

@@ -23,6 +23,9 @@ namespace Nova {
 		void applyAllLights();
 		
 		void subscribeToEvents();
+
+		std::unordered_map<GLint, SpotLightStruct>& getSpotLigts();
+		std::unordered_map<GLint, PointLightStruct>& getPointLights();
 	private:
 		GLint maxPointLights;
 		GLint maxSpotLights;

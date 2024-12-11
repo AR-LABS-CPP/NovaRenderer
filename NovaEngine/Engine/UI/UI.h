@@ -9,6 +9,7 @@
 #include "Events/EventQueue.h"
 #include "Events/LightEvent.h"
 #include "Events/ModelEvent.h"
+#include "LightManagerUI.h"
 #include <windows.h>
 #include <commdlg.h>
 #include <stdlib.h>
@@ -52,7 +53,7 @@ namespace Nova {
 		void addGlobalOptions();
 	private:
 		Window* attachedWindow;
-		
+
 		EventQueue& evtQueue = EventQueue::getInstance();
 	};
 }

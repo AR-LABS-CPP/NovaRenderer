@@ -18,7 +18,7 @@ namespace Nova {
         float outerCutOff
     ) : Light(color), position(position), direction(direction), constant(constant), linear(linear),
         quadratic(quadratic), cutOff(cutOff), outerCutOff(outerCutOff), ambient(ambient),
-        diffuse(diffuse), specular(specular) {}
+        diffuse(diffuse), specular(specular), color(color) {}
 
     void SpotLight::applyLighting(Shader& shader, GLuint index) const {
         std::string baseName = "spotLights[" + std::to_string(index) + "]";

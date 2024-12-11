@@ -1,0 +1,18 @@
+{
+    "ObjectShader": {
+        "vertex": "Shaders/Object/ObjectVertexShader.vert",
+        "fragment": "Shaders/Object/ObjectFragmentShader.frag"
+    },
+    "GizmoShader": {
+        "vertex": "Shaders/Gizmo/GizmoVertexShader.vert",
+        "fragment": "Shaders/Gizmo/GizmoFragmentShader.frag"
+    },
+    "LightSourceShader": {
+        "vertex": "Shaders/LightSource/LightSourceVertexShader.vert",
+        "fragment": "Shaders/LightSource/LightSourceFragmentShader.frag"
+    },
+    "BackgroundShader": {
+        "vertex": "Shaders/Background/BackgroundVertexShader.vert",
+        "fragment": "Shaders/Background/BackgroundFragmentShader.frag"
+    }
+}

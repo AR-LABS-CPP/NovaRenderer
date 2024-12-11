@@ -69,6 +69,14 @@ namespace Nova {
 		NOVA_INFO("LightManager subscribed to events");
 	}
 
+	std::unordered_map<GLint, SpotLightStruct>& LightManager::getSpotLigts() {
+		return spotLights;
+	}
+	
+	std::unordered_map<GLint, PointLightStruct>& LightManager::getPointLights() {
+		return pointLights;
+	}
+
 	void LightManager::onDirectionalLightAdded(Event& event) {
 		auto& directionalLightAddedEvent = static_cast<DirectionalLightAddedEvent&>(event);
 

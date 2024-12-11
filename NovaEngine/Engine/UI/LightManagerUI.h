@@ -1,100 +1,56 @@
 #pragma once
 
 #include "Structs/LightStructs.h"
-#include "Events/LightEvent.h"
-#include "Events/EventQueue.h"
+#include "LightManager.h"
+#include <glm/glm.hpp>
 
 namespace Nova {
 	struct LightNode {
 		const char* Name;
 		const char* Type;
-		int Size;
-		int ChildIdx;
-		int ChildCount;
 
-		inline static ImGuiTableFlags flags = ImGuiTableFlags_BordersV
-			| ImGuiTableFlags_BordersOuterH
-			| ImGuiTableFlags_Resizable
-			| ImGuiTableFlags_RowBg
-			| ImGuiTableFlags_NoBordersInBody;
 		inline static ImGuiTreeNodeFlags treeNodeFlags = ImGuiTreeNodeFlags_SpanAllColumns;
 
-		virtual void DisplayNode(const LightNode* node, const LightNode* allNodes) = 0;
-
-	protected:
-		void DisplayCommonNode(const LightNode* node, const LightNode* allNodes) {
-			ImGui::TableNextRow();
-			ImGui::TableNextColumn();
-
-			const bool isFolder = (node->ChildCount > 0);
-			if (isFolder) {
-				bool open = ImGui::TreeNodeEx(node->Name, treeNodeFlags);
-				ImGui::TableNextColumn();
-				ImGui::TextDisabled("--");
-				ImGui::TableNextColumn();
-				ImGui::TextUnformatted(node->Type);
-
-				if (open) {
-					for (int nChild = 0; nChild < node->ChildCount; nChild++) {
-						DisplayNode(&allNodes[node->ChildIdx + nChild], allNodes);
-					}
-					ImGui::TreePop();
-				}
-			}
-			else {
-				ImGui::TreeNodeEx(node->Name, treeNodeFlags
-					| ImGuiTreeNodeFlags_Leaf
-					| ImGuiTreeNodeFlags_Bullet
-					| ImGuiTreeNodeFlags_NoTreePushOnOpen);
-				ImGui::TableNextColumn();
-				ImGui::Text("%d", node->Size);
-				ImGui::TableNextColumn();
-				ImGui::TextUnformatted(node->Type);
-			}
-		}
+		virtual void displayNode() = 0;
 	};
 
 	struct SpotLightNode : public LightNode {
-		SpotLightNode(const std::vector<std::string>& colNames, float& colSize)
-			: colNames(colNames), colSize(colSize) {}
+		SpotLightStruct& lightStruct;
 
-		void DisplayNode(const LightNode* node, const LightNode* allNodes) override {
-			DisplayCommonNode(node, allNodes);
+		SpotLightNode(SpotLightStruct& lightStruct)
+			: lightStruct(lightStruct) {
+			Name = "Spot Light";
+			Type = "SpotLightStruct";
 		}
 
-		std::vector<std::string> colNames;
-		float colSize;
-	};
+		void displayNode() override {
+			if (ImGui::TreeNode(Name)) {
+				ImGui::Text("Type: %s", Type);
 
-	struct PointLightNode : public LightNode {
-		PointLightNode(const std::vector<std::string>& colNames, float& colSize)
-			: colNames(colNames), colSize(colSize) {}
+				if (ImGui::TreeNode("Position")) {
+					ImGui::DragFloat3("##Position", glm::value_ptr(lightStruct.position), 0.1f);
+					ImGui::TreePop();
+				}
 
-		void DisplayNode(const LightNode* node, const LightNode* allNodes) {
-			DisplayCommonNode(node, allNodes);
+				if (ImGui::TreeNode("Direction")) {
+					ImGui::DragFloat("##Direction", glm::value_ptr(lightStruct.direction), 0.1f);
+				}
+
+				ImGui::TreePop();
+			}
 		}
-
-		std::vector<std::string> colNames;
-		float colSize;
 	};
 
 	class LightManagerUI {
 	public:
-		LightManagerUI(
-			std::unordered_map<GLint, SpotLightStruct>& spotLights,
-			std::unordered_map<GLint, PointLightStruct>& pointLights,
-			std::vector<std::string>& spotLightTableCols,
-			std::vector<std::string>& pointLightTableCols
+		LightManagerUI() = default;
+		explicit LightManagerUI(
+			LightManager& lightManager
 		);
 
-		void setupTableColumns(const std::vector<std::string>& colNames);
-		void drawSpotLightTable();
-		void drawPointLightTable();
-	private:
-		std::unordered_map<GLint, SpotLightStruct> spotLights;
-		std::unordered_map<GLint, PointLightStruct> pointLights;
+		void drawLightsUI();
 
-		std::vector<std::string> spotLightTableCols;
-		std::vector<std::string> pointLightTableCols;
+	private:
+		LightManager& lightManager;
 	};
 }

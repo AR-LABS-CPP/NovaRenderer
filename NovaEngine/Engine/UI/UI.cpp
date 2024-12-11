@@ -66,6 +66,7 @@ namespace Nova {
 		if (ImGui::Begin("Options", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize)) {
 			drawFPSAndMs();
 			addModelOptions();
+			
 			addLightingOptions();
 			addGizmoOptions();
 			addCameraOptions();
