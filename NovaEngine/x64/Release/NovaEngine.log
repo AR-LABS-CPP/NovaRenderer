@@ -1,44 +1,35 @@
 ﻿  Engine.cpp
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(34,30): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(19,30): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(33,29): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(18,29): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(45,82): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(30,82): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(45,52): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(30,52): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(99,4): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(84,4): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(98,4): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(83,4): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(97,10): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(82,10): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(93,11): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(78,11): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(92,10): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(77,10): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-  LightManager.cpp
-  Model.cpp
-  LightManagerUI.cpp
-  UI.cpp
-  main.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(130,9): warning C4005: 'APIENTRY': macro redefinition
-  (compiling source file 'main.cpp')
-      C:\Users\AR-LABS\source\elibs\GLAD\include\glad\glad.h(32,9):
-      see previous definition of 'APIENTRY'
-  
+  ShaderManager.cpp
   Generating code
-  31 of 9022 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
-    13 functions were new in current compilation
-    373 functions had inline decision re-evaluated but remain unchanged
+  7 of 10182 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    70 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   NovaEngine.vcxproj -> C:\Users\AR-LABS\source\repos\NovaEngine\x64\Release\NovaEngine.exe

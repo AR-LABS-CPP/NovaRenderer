@@ -2,16 +2,6 @@
 #include "Engine.h"
 
 namespace Nova {
-	void msgCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* userParam) {
-		std::cout << "OpenGL Debug Message: " << message << std::endl;
-	}
-
-	void enableOpenGLDebug() {
-		glEnable(GL_DEBUG_OUTPUT);
-		glDebugMessageCallback(msgCallback, nullptr);
-		glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
-	}
-
 	void Engine::initializeAndRun() {
 		initializeLogger();
 		subscribeToEvents();
@@ -21,13 +11,8 @@ namespace Nova {
 		
 		Camera camera = initializeCamera(mainWindow);
 
-		Shader objectShader = ShaderBuilder()
-			.withVertexShader("Shaders/Object/ObjectVertexShader.vert")
-			.withFragmentShader("Shaders/Object/ObjectFragmentShader.frag")
-			.buildShader();
-
-		// ShaderManager shaderManager("Shaders/shaders.json");
-		//Shader objectShader = shaderManager.getShader(ShaderName::ObjectShader);
+		ShaderManager shaderManager("Shaders/shaders.json");
+		Shader objectShader = shaderManager.getShader(ShaderName::ObjectShader);
 		
 		FrameBuffer sceneBuffer(
 			mainWindow.getWindowWidth(),

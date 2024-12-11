@@ -7,7 +7,7 @@
 
 namespace Nova {
 	enum class ShaderName {
-		ObjectShader = 0,
+		ObjectShader,
 		GizmoShader,
 		LightSourceShader,
 		BackgroundShader

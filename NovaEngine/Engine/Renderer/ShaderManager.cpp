@@ -8,14 +8,16 @@ namespace Nova {
 		shaderData = nlohmann::json::parse(input);
 	}
 
+	// TODO: the issue is with the cache, fix here
 	Shader& ShaderManager::getShader(ShaderName shaderName) {
-		if (shaderCache.find(shaderName) != shaderCache.end()) {
-			return shaderCache[shaderName];
+		auto iter = shaderCache.find(shaderName);
+
+		if (iter != shaderCache.end()) {
+			return iter->second;
 		}
 		else {
-			Shader loadedShader = loadShader(shaderName);
-			shaderCache[shaderName] = loadedShader;
-			return shaderCache[shaderName];
+			auto [insertedAt, success] = shaderCache.emplace(shaderName, loadShader(shaderName));
+			return insertedAt->second;
 		}
 	}
 
