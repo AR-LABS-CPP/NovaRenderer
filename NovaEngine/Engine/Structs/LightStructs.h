@@ -68,7 +68,6 @@ namespace Nova {
 		}
 
 		bool toggleActive() {
-			std::cout << isActive << std::endl;
 			return setProperty(isActive, isActive ? false : true);
 		}
 	};

@@ -17,36 +17,45 @@ namespace Nova {
 	// a loop is not necessary, there aren't many shaders out there
 	void Shader::compileAndLink(const std::vector<std::string>& shaderPaths) {
 		std::vector<GLuint> shaders;
+		std::string shaderCode;
 
 		if(!shaderPaths[0].empty()) {
-			std::string vertexShaderCode = loadShaderCodeFromDisk(shaderPaths[0]);
-			
+			shaderCode = loadShaderCodeFromDisk(shaderPaths[0]);
+
+			NOVA_ASSERT(shaderCode.size() > 0, "Vertex shader code must not be empty");
+
 			GLuint shaderId = 0;
-			compileShader(GL_VERTEX_SHADER, vertexShaderCode.c_str(), 1, shaderId);
+			compileShader(GL_VERTEX_SHADER, shaderCode.c_str(), 1, shaderId);
 			shaders.push_back(shaderId);
 		}
 
 		if (!shaderPaths[1].empty()) {
-			std::string vertexShaderCode = loadShaderCodeFromDisk(shaderPaths[1]);
+			shaderCode = loadShaderCodeFromDisk(shaderPaths[1]);
+
+			NOVA_ASSERT(shaderCode.size() > 0, "Fragment shader code must not be empty");
 
 			GLuint shaderId = 0;
-			compileShader(GL_FRAGMENT_SHADER, vertexShaderCode.c_str(), 1, shaderId);
+			compileShader(GL_FRAGMENT_SHADER, shaderCode.c_str(), 1, shaderId);
 			shaders.push_back(shaderId);
 		}
 
 		if (!shaderPaths[2].empty()) {
-			std::string vertexShaderCode = loadShaderCodeFromDisk(shaderPaths[2]);
+			shaderCode = loadShaderCodeFromDisk(shaderPaths[2]);
+
+			NOVA_ASSERT(shaderCode.size() > 0, "Geometry shader code must not be empty");
 
 			GLuint shaderId = 0;
-			compileShader(GL_GEOMETRY_SHADER, vertexShaderCode.c_str(), 1, shaderId);
+			compileShader(GL_GEOMETRY_SHADER, shaderCode.c_str(), 1, shaderId);
 			shaders.push_back(shaderId);
 		}
 
 		if (!shaderPaths[3].empty()) {
-			std::string vertexShaderCode = loadShaderCodeFromDisk(shaderPaths[3]);
+			shaderCode = loadShaderCodeFromDisk(shaderPaths[3]);
+
+			NOVA_ASSERT(shaderCode.size() > 0, "Compute shader code must not be empty");
 
 			GLuint shaderId = 0;
-			compileShader(GL_FRAGMENT_SHADER, vertexShaderCode.c_str(), 1, shaderId);
+			compileShader(GL_COMPUTE_SHADER, shaderCode.c_str(), 1, shaderId);
 			shaders.push_back(shaderId);
 		}
 

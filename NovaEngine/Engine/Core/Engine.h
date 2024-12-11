@@ -8,6 +8,7 @@
 #include "SpotLight.h"
 #include "Renderer/Shader.h"
 #include "Renderer/ShaderBuilder.h"
+#include "Renderer/ShaderManager.h"
 #include "Model.h"
 #include "LightManager.h"
 #include "ModelManager.h"

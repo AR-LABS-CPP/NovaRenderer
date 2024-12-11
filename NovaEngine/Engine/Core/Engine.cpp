@@ -2,6 +2,16 @@
 #include "Engine.h"
 
 namespace Nova {
+	void msgCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* userParam) {
+		std::cout << "OpenGL Debug Message: " << message << std::endl;
+	}
+
+	void enableOpenGLDebug() {
+		glEnable(GL_DEBUG_OUTPUT);
+		glDebugMessageCallback(msgCallback, nullptr);
+		glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
+	}
+
 	void Engine::initializeAndRun() {
 		initializeLogger();
 		subscribeToEvents();
@@ -16,10 +26,8 @@ namespace Nova {
 			.withFragmentShader("Shaders/Object/ObjectFragmentShader.frag")
 			.buildShader();
 
-		Shader gizmoShader = ShaderBuilder()
-			.withVertexShader("Shaders/Gizmo/GizmoVertexShader.vert")
-			.withFragmentShader("Shaders/Gizmo/GizmoFragmentShader.frag")
-			.buildShader();
+		// ShaderManager shaderManager("Shaders/shaders.json");
+		//Shader objectShader = shaderManager.getShader(ShaderName::ObjectShader);
 		
 		FrameBuffer sceneBuffer(
 			mainWindow.getWindowWidth(),
@@ -35,11 +43,8 @@ namespace Nova {
 		while(!mainWindow.windowShouldClose()) {
 			novaUi.createNewUIFrame();
 			sceneBuffer.bindBuffer(mainWindow.getWindowWidth(), mainWindow.getWindowHeight());
+			
 			mainWindow.update(glm::vec4(0.2f, 0.2f, 0.2f, 1.0f));
-
-			objectShader.setInt("nPointLights", 0);
-			objectShader.setInt("nSpotLights", 0);
-			objectShader.setInt("directionalLightActive", 1);
 
 			objectShader.useShader();
 			objectShader.setVec3("viewerPos", camera.getCameraPosition());
@@ -54,7 +59,6 @@ namespace Nova {
 
 			sceneBuffer.unbindBuffer();
 			novaUi.renderUIFrame(sceneBuffer);
-			lightManagerUI.drawLightsUI();
 			mainWindow.swap();
 		}
 
