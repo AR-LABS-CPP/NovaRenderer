@@ -243,11 +243,13 @@ namespace Nova {
 
 		if (loadModelPressed) {
 			std::string filePath = showFileDialog();
-			NOVA_ASSERT(filePath.size() != 0, "Model file path cannot be zero or empty");
 
-			ModelSelectedEvent modelSelectedEvent(filePath);
-			EventBus::getInstance().dispatch(modelSelectedEvent);
+			if (!filePath.empty()) {
+				ModelSelectedEvent modelSelectedEvent(filePath);
+				EventBus::getInstance().dispatch(modelSelectedEvent);
+			}
 
+			NOVA_WARN("Model file path cannot be zero or empty");
 			loadModelPressed = false;
 		}
 		ImGui::Separator();

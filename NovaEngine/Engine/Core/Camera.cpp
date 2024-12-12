@@ -41,12 +41,12 @@ namespace Nova {
 
 	void Camera::setAspectRatio(GLfloat newAspectRatio) {
 		aspectRatio = newAspectRatio;
-		projectionMatrix = glm::perspective(glm::radians(fieldOfView), aspectRatio, 0.1f, 100.0f);
+		projectionMatrix = glm::perspective(glm::radians(fieldOfView), aspectRatio, 0.5f, 4096.0f);
 	}
 
 	void Camera::processKeyboard(KeyStateEvent& event) {
 		GLfloat velocity = movementSpeed * event.getDeltaTime();
-		
+
 		bool* keys = event.getKeys();
 
 		if (keys[GLFW_KEY_LEFT_CONTROL]) {

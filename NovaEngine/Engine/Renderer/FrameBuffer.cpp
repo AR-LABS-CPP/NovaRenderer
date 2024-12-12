@@ -51,6 +51,7 @@ namespace Nova {
 	void FrameBuffer::bindBuffer(GLfloat width, GLfloat height) {
 		rescaleFrameBuffer(width, height);
 		glBindFramebuffer(GL_FRAMEBUFFER, FBO);
+		// glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 	
 	void FrameBuffer::unbindBuffer() const {

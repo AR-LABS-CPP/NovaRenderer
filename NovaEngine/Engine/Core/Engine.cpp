@@ -25,7 +25,6 @@ namespace Nova {
 		UI novaUi(&mainWindow, &lightManagerUI);
 		novaUi.initializeUI();
 
-
 		while(!mainWindow.windowShouldClose()) {
 			novaUi.createNewUIFrame();
 			sceneBuffer.bindBuffer(mainWindow.getWindowWidth(), mainWindow.getWindowHeight());

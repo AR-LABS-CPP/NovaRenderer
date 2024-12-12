@@ -9,7 +9,6 @@ namespace Nova {
     void LightManagerUI::drawUI() {
         ImGui::Text("Lighting Options");
         if (ImGui::Checkbox("Add Directional Light", &lightManager.isDirectionalLightActive)) {
-            std::cout << lightManager.isDirectionalLightActive << std::endl;
             if (lightManager.isDirectionalLightActive == 0) {
                 evtQueue.enqueue(std::make_unique<DirectionalLightRemovedEvent>());
             }
