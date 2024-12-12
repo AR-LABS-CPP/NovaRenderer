@@ -9,8 +9,8 @@ namespace Nova {
 	}
 
 	// TODO: the issue is with the cache, fix here
-	Shader& ShaderManager::getShader(ShaderName shaderName) {
-		auto iter = shaderCache.find(shaderName);
+	Shader ShaderManager::getShader(ShaderName shaderName) {
+		/*auto iter = shaderCache.find(shaderName);
 
 		if (iter != shaderCache.end()) {
 			return iter->second;
@@ -18,7 +18,9 @@ namespace Nova {
 		else {
 			auto [insertedAt, success] = shaderCache.emplace(shaderName, loadShader(shaderName));
 			return insertedAt->second;
-		}
+		}*/
+
+		return loadShader(shaderName);
 	}
 
 	Shader ShaderManager::loadShader(ShaderName shaderName) {

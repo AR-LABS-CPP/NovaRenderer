@@ -2,8 +2,6 @@
 #include "SpotLight.h"
 
 namespace Nova {
-    SpotLight::SpotLight() : Light(glm::vec3(1.0)) {}
-
     SpotLight::SpotLight(
         const glm::vec3& position,
         const glm::vec3& direction,
@@ -24,7 +22,7 @@ namespace Nova {
         std::string baseName = "spotLights[" + std::to_string(index) + "]";
 
         shader.setVec3(baseName + ".position", position);
-        shader.setVec3(baseName + ".color", getColor());
+        shader.setVec3(baseName + ".color", color);
 
         shader.setFloat(baseName + ".constant", constant);
         shader.setFloat(baseName + ".linear", linear);
@@ -37,12 +35,5 @@ namespace Nova {
         shader.setVec3(baseName + ".direction", direction);
         shader.setFloat(baseName + ".cutOff", cutOff);
         shader.setFloat(baseName + ".outerCutOff", outerCutOff);
-    }
-
-    void SpotLight::setPosition(glm::vec3& newPosition) {
-        position = newPosition;
-    }
-    void SpotLight::setDirection(glm::vec3& newDirection) {
-        direction = newDirection;
     }
 }

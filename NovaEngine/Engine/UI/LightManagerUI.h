@@ -2,10 +2,11 @@
 
 #include "Structs/LightStructs.h"
 #include "LightManager.h"
+#include "ManagerUI.h"
 #include <glm/glm.hpp>
 
 namespace Nova {
-	struct LightNode {
+	/*struct LightNode {
 		const char* Name;
 		const char* Type;
 
@@ -39,18 +40,19 @@ namespace Nova {
 				ImGui::TreePop();
 			}
 		}
-	};
+	};*/
 
-	class LightManagerUI {
+	class LightManagerUI : public ManagerUI {
 	public:
 		LightManagerUI() = default;
 		explicit LightManagerUI(
 			LightManager& lightManager
 		);
 
-		void drawLightsUI();
+		void drawUI() override;
 
 	private:
 		LightManager& lightManager;
+		EventQueue& evtQueue = EventQueue::getInstance();
 	};
 }

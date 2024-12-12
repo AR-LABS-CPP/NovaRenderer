@@ -9,6 +9,8 @@
 #include "Events/EventQueue.h"
 #include "Events/LightEvent.h"
 #include "Events/ModelEvent.h"
+#include "Renderer/ShaderManager.h"
+#include "ModelManager.h"
 #include "LightManagerUI.h"
 #include <windows.h>
 #include <commdlg.h>
@@ -20,10 +22,14 @@ namespace Nova {
 		static bool directionalLightActive;
 
 		UI() = delete;
-		UI(Window* currWindow);
+		UI(
+			Window* currentWindow,
+			LightManagerUI* lightManagerUI
+		);
 		~UI() = default;
 
 		void initializeUI();
+		void updateUI();
 		void createNewUIFrame();
 		void renderUIFrame(FrameBuffer& sceneBuffer);
 		void shutdownUI();
@@ -45,7 +51,6 @@ namespace Nova {
 
 		void drawFPSAndMs();
 		void addModelOptions();
-		void addLightingOptions();
 		void addColorOption();
 		void addGizmoOptions();
 		void addMaterialOptions();
@@ -53,6 +58,7 @@ namespace Nova {
 		void addGlobalOptions();
 	private:
 		Window* attachedWindow;
+		LightManagerUI* lightManagerUI;
 
 		EventQueue& evtQueue = EventQueue::getInstance();
 	};

@@ -16,7 +16,7 @@ namespace Nova {
 	class ShaderManager {
 	public:
 		ShaderManager(const std::string& jsonPath);
-		Shader& getShader(ShaderName shaderName);
+		Shader getShader(ShaderName shaderName);
 	private:
 		std::unordered_map<ShaderName, Shader> shaderCache;
 		nlohmann::json shaderData;

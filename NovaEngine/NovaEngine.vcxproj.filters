@@ -266,6 +266,9 @@
     <ClInclude Include="Vendor\nlohmann\json_fwd.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\UI\ManagerUI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\LightSource\LightSourceFragmentShader.frag">

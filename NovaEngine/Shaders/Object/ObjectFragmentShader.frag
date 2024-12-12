@@ -130,8 +130,8 @@ vec3 calculateDirectionalLight(
     vec3 lightDir = normalize(-directionalLight.direction);
 
     // Default colors in case of no textures
-    vec3 baseDiffuseColor = vec3(1.0);
-    vec3 baseSpecularColor = vec3(0.5);
+    vec3 baseDiffuseColor = directionalLight.diffuse;
+    vec3 baseSpecularColor = directionalLight.specular;
 
     // Sample textures once
     vec3 textureDiffuse = hasTexture ? vec3(texture(texture_diffuse1, TexCoords)) : baseDiffuseColor;
@@ -164,8 +164,8 @@ vec3 calculatePointLight(
     vec3 lightDir = normalize(light.position - fragPos);
 
     // Default colors in case of no textures
-    vec3 baseDiffuseColor = vec3(1.0);
-    vec3 baseSpecularColor = vec3(0.5);
+    vec3 baseDiffuseColor = light.diffuse;
+    vec3 baseSpecularColor = light.specular;
 
     vec3 textureDiffuse = hasTexture ? vec3(texture(texture_diffuse1, TexCoords)) : baseDiffuseColor;
     vec3 textureSpecular = hasTexture ? vec3(texture(texture_specular1, TexCoords)) : baseSpecularColor;
@@ -183,7 +183,7 @@ vec3 calculatePointLight(
         light.quadratic * (dist * dist));
 
     // Ambient
-    vec3 ambient = light.ambient * textureDiffuse;
+    vec3 ambient = light.ambient * light.color * textureDiffuse;
     vec3 diffuse = light.diffuse * diff * textureDiffuse;
     vec3 specular = light.specular * spec * textureSpecular;
 
@@ -207,8 +207,8 @@ vec3 calculateSpotLight(
     vec3 lightDir = normalize(light.position - fragPos);
 
     // Default colors in case of no textures
-    vec3 baseDiffuseColor = vec3(1.0);
-    vec3 baseSpecularColor = vec3(0.5);
+    vec3 baseDiffuseColor = light.diffuse;
+    vec3 baseSpecularColor = light.specular;
 
     vec3 textureDiffuse = hasTexture ? vec3(texture(texture_diffuse1, TexCoords)) : baseDiffuseColor;
     vec3 textureSpecular = hasTexture ? vec3(texture(texture_specular1, TexCoords)) : baseSpecularColor;
@@ -231,7 +231,7 @@ vec3 calculateSpotLight(
     float intensity = clamp((theta - light.outerCutOff) / epsilon, 0.0, 1.0);
 
     // Ambient
-    vec3 ambient = light.ambient * textureDiffuse;
+    vec3 ambient = light.ambient * light.color * textureDiffuse;
     vec3 diffuse = light.diffuse * diff * textureDiffuse;
     vec3 specular = light.specular * spec * textureSpecular;
 

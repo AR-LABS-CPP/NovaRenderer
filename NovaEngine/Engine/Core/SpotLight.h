@@ -6,10 +6,21 @@
 namespace Nova {
     class SpotLight : public Light {
     public:
-        SpotLight();
+        glm::vec3 position;
+        glm::vec3 direction;
+        glm::vec3 ambient;
+        glm::vec3 diffuse;
+        glm::vec3 specular;
+        glm::vec3 color;
+        float constant;
+        float linear;
+        float quadratic;
+        float cutOff;
+        float outerCutOff;
+
         SpotLight(
-            const glm::vec3& position,
-            const glm::vec3& direction,
+            const glm::vec3& position = glm::vec3(1.0f),
+            const glm::vec3& direction = glm::vec3(1.0f),
             const glm::vec3& color = glm::vec3(1.0f),
             const glm::vec3& ambient = glm::vec3(0.5),
             const glm::vec3& diffuse = glm::vec3(0.5),
@@ -22,19 +33,5 @@ namespace Nova {
         );
 
         void applyLighting(Shader& shader, GLuint index) const override;
-        void setPosition(glm::vec3& newPosition);
-        void setDirection(glm::vec3& newDirection);
-
-        glm::vec3 position;
-        glm::vec3 direction;
-        glm::vec3 ambient;
-        glm::vec3 diffuse;
-        glm::vec3 specular;
-        glm::vec3 color;
-        float constant;
-        float linear;
-        float quadratic;
-        float cutOff;
-        float outerCutOff;
     };
 }

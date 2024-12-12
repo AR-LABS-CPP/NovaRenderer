@@ -6,8 +6,17 @@
 namespace Nova {
     class PointLight : public Light {
     public:
+        float constant;
+        float linear;
+        float quadratic;
+        glm::vec3 ambient;
+        glm::vec3 diffuse;
+        glm::vec3 specular;
+        glm::vec3 position;
+        glm::vec3 color;
+
         PointLight(
-            const glm::vec3& position = glm::vec3(0.0f),
+            const glm::vec3& position = glm::vec3(1.0f),
             const glm::vec3& color = glm::vec3(1.0f),
             const glm::vec3& ambient = glm::vec3(0.5),
             const glm::vec3& diffuse = glm::vec3(0.5),
@@ -20,14 +29,5 @@ namespace Nova {
         void applyLighting(Shader& shader, GLuint index) const override;
 
         void setPosition(glm::vec3& newPosition);
-    private:
-        float constant;
-        float linear;
-        float quadratic;
-        glm::vec3 ambient;
-        glm::vec3 diffuse;
-        glm::vec3 specular;
-        glm::vec3 position;
-        glm::vec3 color;
     };
 }

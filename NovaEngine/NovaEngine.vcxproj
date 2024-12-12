@@ -332,6 +332,7 @@
     <ClInclude Include="Engine\Structs\LightStructs.h" />
     <ClInclude Include="Engine\UI\LightManagerUI.h" />
     <ClInclude Include="Engine\Renderer\ShaderManager.h" />
+    <ClInclude Include="Engine\UI\ManagerUI.h" />
     <ClInclude Include="Vendor\ImGui\imconfig.h" />
     <ClInclude Include="Vendor\ImGui\imgui.h" />
     <ClInclude Include="Vendor\ImGui\ImGuiFileDialog.h" />

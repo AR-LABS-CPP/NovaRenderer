@@ -32,7 +32,11 @@ namespace Nova {
 		glm::vec3 position;
 		glm::vec3 direction;
 
-		SpotLightStruct() = default;
+		SpotLightStruct() {
+			spotLight = SpotLight();
+			position = glm::vec3(1.0);
+			direction = glm::vec3(1.0);
+		}
 
 		bool setPos(const glm::vec3& newPos) {
 			return setProperty(position, newPos);
@@ -47,7 +51,9 @@ namespace Nova {
 		PointLight pointLight;
 		glm::vec3 position;
 
-		PointLightStruct() = default;
+		PointLightStruct() {
+			pointLight = PointLight();
+		}
 
 		bool setPos(const glm::vec3& newPos) {
 			return setProperty(position, newPos);

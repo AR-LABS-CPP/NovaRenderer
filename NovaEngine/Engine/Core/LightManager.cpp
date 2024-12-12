@@ -19,23 +19,32 @@ namespace Nova {
 		attachedShader.setBool("directionalLightActive", dirLight.isActive);
 
 		if (dirLight.isActive && dirLight.hasChanged) { 
-			dirLight.directionalLight.setDirection(dirLight.direction);
+			// dirLight.directionalLight.setDirection(dirLight.direction);
 			dirLight.directionalLight.applyLighting(attachedShader, 0);
 			dirLight.resetChangeFlag();
 		}
 	}
 
 	void LightManager::applyPointLights() {
-		for (auto& pl : pointLights) {
-			pl.second.pointLight.applyLighting(attachedShader, pl.first);
-			pl.second.pointLight.setPosition(pl.second.position);
+		attachedShader.setInt("nPointLights", currNoOfPointLights);
+
+		if (currNoOfPointLights > 0) {
+			for (auto& pl : pointLights) {
+				pl.second.pointLight.applyLighting(attachedShader, pl.first);
+				pl.second.pointLight.setPosition(pl.second.position);
+			}
 		}
 	}
 
 	void LightManager::applySpotLights() {
-		for (auto& sl : spotLights) {
-			sl.second.spotLight.applyLighting(attachedShader, sl.first);
-			sl.second.spotLight.setPosition(sl.second.position);
+		attachedShader.setInt("nSpotLights", currNoOfSpotLights);
+
+		if (currNoOfSpotLights > 0) {
+			for (auto& sl : spotLights) {
+				sl.second.spotLight.applyLighting(attachedShader, sl.first);
+				sl.second.setPos(sl.second.position);
+				sl.second.setDir(sl.second.direction);
+			}
 		}
 	}
 
@@ -110,11 +119,8 @@ namespace Nova {
 		}
 
 		SpotLightStruct newSpotLight;
-		newSpotLight.spotLight = SpotLight(
-			glm::vec3(1.0),
-			glm::vec3(1.0)
-		);
 		spotLights[nextSpotLightId++] = newSpotLight;
+		currNoOfSpotLights += 1;
 
 		NOVA_INFO("Spot light added, ID: " + (nextSpotLightId - 1));
 	}
@@ -132,8 +138,8 @@ namespace Nova {
 		}
 
 		PointLightStruct newPointLight;
-		newPointLight.pointLight = PointLight(glm::vec3(1.0));
 		pointLights[nextPointLightId++] = newPointLight;
+		currNoOfPointLights += 1;
 
 		NOVA_INFO("Point light added, ID: " + (nextPointLightId - 1));
 	}

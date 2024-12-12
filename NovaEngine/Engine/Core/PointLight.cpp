@@ -11,14 +11,16 @@ namespace Nova {
         float constant,
         float linear,
         float quadratic
-    ) : Light(color), constant(constant), linear(linear), quadratic(quadratic),
+    ) : Light(color), color(color), constant(constant), linear(linear), quadratic(quadratic),
         ambient(ambient), diffuse(diffuse), specular(specular), position(position) {}
 
     void PointLight::applyLighting(Shader& shader, GLuint index) const {
+        std::cout << position.x << ", " << position.y << ", " << position.y << std::endl;
+
         std::string baseName = "pointLights[" + std::to_string(index) + "]";
 
         shader.setVec3(baseName + ".position", position);
-        shader.setVec3(baseName + ".color", getColor());
+        shader.setVec3(baseName + ".color", color);
         shader.setVec3(baseName + ".ambient", ambient);
         shader.setVec3(baseName + ".diffuse", diffuse);
         shader.setVec3(baseName + ".specular", specular);

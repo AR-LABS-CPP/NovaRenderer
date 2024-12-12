@@ -4,9 +4,10 @@
 namespace Nova {
 	bool UI::directionalLightActive = false;
 
-	UI::UI(Window* currentWindow) {
-		attachedWindow = currentWindow;
-	}
+	UI::UI(
+		Window* currentWindow,
+		LightManagerUI* lightManagerUI
+	) : lightManagerUI(lightManagerUI), attachedWindow(currentWindow) {}
 
 	void UI::initializeUI() {
 		IMGUI_CHECKVERSION();
@@ -24,6 +25,8 @@ namespace Nova {
 		NOVA_INFO("UI initialized");
 	}
 
+	void UI::updateUI() {}
+
 	void UI::createNewUIFrame() {
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
@@ -36,6 +39,7 @@ namespace Nova {
 		initializeDockSpace(windowFlags, dockspace);
 
 		createSceneView(sceneBuffer.getTexture());
+		// need them inside the options panel so index 0
 		createOptionsPanel();
 		createLogsPanel();
 		createCommandsPanel();
@@ -66,12 +70,11 @@ namespace Nova {
 		if (ImGui::Begin("Options", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize)) {
 			drawFPSAndMs();
 			addModelOptions();
-			
-			addLightingOptions();
 			addGizmoOptions();
 			addCameraOptions();
 			addMaterialOptions();
 			addGlobalOptions();
+			lightManagerUI->drawUI();
 		}
 		ImGui::End();
 		ImGui::PopStyleColor();
@@ -171,14 +174,12 @@ namespace Nova {
 		ImGui::SetNextWindowSize(viewport->WorkSize);
 		ImGui::SetNextWindowViewport(viewport->ID);
 
-		ImGuiWindowFlags windowFlags =
-			ImGuiWindowFlags_NoDocking |
-			ImGuiWindowFlags_NoResize |
-			ImGuiWindowFlags_NoTitleBar |
-			ImGuiWindowFlags_NoCollapse |
-			ImGuiWindowFlags_NoMove |
-			ImGuiWindowFlags_NoNavFocus |
-			ImGuiWindowFlags_NoBringToFrontOnFocus;
+		ImGuiWindowFlags windowFlags =ImGuiWindowFlags_NoResize
+			| ImGuiWindowFlags_NoTitleBar
+			| ImGuiWindowFlags_NoCollapse 
+			| ImGuiWindowFlags_NoMove 
+			| ImGuiWindowFlags_NoNavFocus 
+			| ImGuiWindowFlags_NoBringToFrontOnFocus;
 
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
@@ -202,7 +203,7 @@ namespace Nova {
 
 	void UI::initializeDockSpace(ImGuiWindowFlags dockspaceFlags, ImGuiID dockspaceId) {
 		static bool first_time = true;
-		if (first_time) {
+		if (first_time) { 
 			first_time = false;
 
 			ImGui::DockBuilderRemoveNode(dockspaceId);
@@ -250,35 +251,6 @@ namespace Nova {
 			loadModelPressed = false;
 		}
 		ImGui::Separator();
-	}
-
-	void UI::addLightingOptions() {
-		ImGui::Text("Lighting Options");
-		if (ImGui::Checkbox("Add Directional Light", &directionalLightActive)) {
-			std::cout << directionalLightActive << std::endl;
-			
-			if (directionalLightActive == 0) {
-				evtQueue.enqueue(std::make_unique<DirectionalLightRemovedEvent>());
-			}
-			else {
-				evtQueue.enqueue(std::make_unique<DirectionalLightAddedEvent>());
-			}
-		}
-
-		if (ImGui::Button("Add Spot Light", ImVec2(-1, 0))) {
-			evtQueue.enqueue(std::make_unique<SpotLightAddedEvent>());
-		}
-		if (ImGui::Button("Add Point Light", ImVec2(-1, 0))) {
-			evtQueue.enqueue(std::make_unique<PointLightAddedEvent>());
-		}
-
-		static ImVec4 lightColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
-		ImGui::Text("Light Color");
-		ImGui::ColorEdit4("Light Color", (float*)&lightColor);
-		ImGui::Separator();
-
-		static float ambientIntensity = 0.5f;
-		ImGui::SliderFloat("Ambient Light", &ambientIntensity, 0.0f, 1.0f);
 	}
 
 	void UI::addColorOption() {}

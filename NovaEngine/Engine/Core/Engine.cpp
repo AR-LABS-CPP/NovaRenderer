@@ -14,16 +14,17 @@ namespace Nova {
 		ShaderManager shaderManager("Shaders/shaders.json");
 		Shader objectShader = shaderManager.getShader(ShaderName::ObjectShader);
 		
+		LightManager lightManager(objectShader);
+		LightManagerUI lightManagerUI(lightManager);
+
 		FrameBuffer sceneBuffer(
 			mainWindow.getWindowWidth(),
 			mainWindow.getWindowHeight()
 		);
 		
-		UI novaUi(&mainWindow);
+		UI novaUi(&mainWindow, &lightManagerUI);
 		novaUi.initializeUI();
 
-		LightManager lightManager(objectShader);
-		LightManagerUI lightManagerUI(lightManager);
 
 		while(!mainWindow.windowShouldClose()) {
 			novaUi.createNewUIFrame();

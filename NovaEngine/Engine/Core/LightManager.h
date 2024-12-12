@@ -35,8 +35,9 @@ namespace Nova {
 		std::unordered_map<GLint, SpotLightStruct> spotLights;
 		std::unordered_map<GLint, PointLightStruct> pointLights;
 
-		GLint nextSpotLightId = 1;
-		GLint nextPointLightId = 1;
+		
+		GLint nextSpotLightId = 0;
+		GLint nextPointLightId = 0;
 
 		EventQueue& evtQueue = EventQueue::getInstance();
 
