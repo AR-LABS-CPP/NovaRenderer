@@ -14,7 +14,7 @@ namespace Nova {
         float quadratic,
         float cutOff,
         float outerCutOff
-    ) : Light(color), position(position), direction(direction), constant(constant), linear(linear),
+    ) : position(position), direction(direction), constant(constant), linear(linear),
         quadratic(quadratic), cutOff(cutOff), outerCutOff(outerCutOff), ambient(ambient),
         diffuse(diffuse), specular(specular), color(color) {}
 

@@ -8,7 +8,12 @@ namespace Nova {
 
     void LightManagerUI::drawUI() {
         ImGui::Text("Lighting Options");
-        if (ImGui::Checkbox("Add Directional Light", &lightManager.isDirectionalLightActive)) {
+        ImGui::Separator();
+        ImGui::Text("Directional Light");
+
+        auto& dirLight = lightManager.getDirectionalLight();
+
+        if (ImGui::Checkbox("Enable Directional Light", &lightManager.isDirectionalLightActive)) {
             if (lightManager.isDirectionalLightActive == 0) {
                 evtQueue.enqueue(std::make_unique<DirectionalLightRemovedEvent>());
             }
@@ -16,6 +21,9 @@ namespace Nova {
                 evtQueue.enqueue(std::make_unique<DirectionalLightAddedEvent>());
             }
         }
+        ImGui::DragFloat3("Direction", glm::value_ptr(dirLight.direction), 0.1f, -FLT_MIN, FLT_MAX);
+        ImGui::ColorEdit3("Color", glm::value_ptr(dirLight.directionalLight.color));
+
         if (ImGui::Button("Add Spot Light", ImVec2(-1, 0))) {
             evtQueue.enqueue(std::make_unique<SpotLightAddedEvent>());
         }
@@ -30,8 +38,8 @@ namespace Nova {
         for (auto& [id, sl] : spotLights) {
             ImGui::PushID(id);
             if (ImGui::CollapsingHeader(("Spot Light " + std::to_string(id)).c_str())) {
-                ImGui::DragFloat3("Position", glm::value_ptr(sl.spotLight.position), 0.1f, FLT_MIN, FLT_MAX);
-                ImGui::DragFloat3("Direction", glm::value_ptr(sl.spotLight.direction), 0.1f, FLT_MIN, FLT_MAX);
+                ImGui::DragFloat3("Position", glm::value_ptr(sl.spotLight.position), 0.1f, -FLT_MIN, FLT_MAX);
+                ImGui::DragFloat3("Direction", glm::value_ptr(sl.spotLight.direction), 0.1f, -FLT_MIN, FLT_MAX);
                 ImGui::DragFloat3("Ambient", glm::value_ptr(sl.spotLight.ambient), 0.1f);
                 ImGui::DragFloat3("Diffuse", glm::value_ptr(sl.spotLight.diffuse), 0.1f);
                 ImGui::DragFloat3("Specular", glm::value_ptr(sl.spotLight.specular), 0.1f);
@@ -53,7 +61,7 @@ namespace Nova {
         for (auto& [id, pl] : pointLights) {
             ImGui::PushID(id);
             if (ImGui::CollapsingHeader(("Point Light " + std::to_string(id)).c_str())) {
-                ImGui::DragFloat3("Position", glm::value_ptr(pl.position), 0.1f, FLT_MIN, FLT_MAX);
+                ImGui::DragFloat3("Position", glm::value_ptr(pl.position), 0.1f, -FLT_MIN, FLT_MAX);
                 ImGui::DragFloat3("Ambient", glm::value_ptr(pl.pointLight.ambient), 0.1f);
                 ImGui::DragFloat3("Diffuse", glm::value_ptr(pl.pointLight.diffuse), 0.1f);
                 ImGui::DragFloat3("Specular", glm::value_ptr(pl.pointLight.specular), 0.1f);

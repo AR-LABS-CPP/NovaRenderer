@@ -19,7 +19,7 @@ namespace Nova {
 		attachedShader.setBool("directionalLightActive", dirLight.isActive);
 
 		if (dirLight.isActive && dirLight.hasChanged) { 
-			// dirLight.directionalLight.setDirection(dirLight.direction);
+			dirLight.directionalLight.setDirection(dirLight.direction);
 			dirLight.directionalLight.applyLighting(attachedShader, 0);
 			dirLight.resetChangeFlag();
 		}
@@ -84,6 +84,10 @@ namespace Nova {
 	
 	std::unordered_map<GLint, PointLightStruct>& LightManager::getPointLights() {
 		return pointLights;
+	}
+
+	DirectionalLightStruct& LightManager::getDirectionalLight() {
+		return dirLight;
 	}
 
 	void LightManager::onDirectionalLightAdded(Event& event) {

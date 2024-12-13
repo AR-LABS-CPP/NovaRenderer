@@ -8,6 +8,7 @@ C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\glad.c;C:\Users\AR-LABS\sour
 C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\ModelManager.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\ModelManager.obj
 C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\UI\LightManagerUI.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\LightManagerUI.obj
 C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Renderer\ShaderManager.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\ShaderManager.obj
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\UI\GlobalSettingsUI.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\GlobalSettingsUI.obj
 C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Vendor\ImGui\imgui.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\imgui.obj
 C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Vendor\ImGui\imgui_demo.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\imgui_demo.obj
 C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Vendor\ImGui\imgui_draw.cpp;C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\x64\Release\imgui_draw.obj

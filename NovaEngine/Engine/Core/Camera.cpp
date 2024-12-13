@@ -156,12 +156,12 @@ namespace Nova {
 	}
 
 	void Camera::subscribeToEvents() {
-		EventBus::getInstance().subscribe<KeyStateEvent>([this](Event& event) {
+		eventQueue.subscribe<KeyStateEvent>([this](Event& event) {
 			auto& keyStateEvent = static_cast<KeyStateEvent&>(event);
 			processKeyboard(keyStateEvent);
 		});
 
-		EventBus::getInstance().subscribe<MouseMovedEvent>([this](Event& event) {
+		eventQueue.subscribe<MouseMovedEvent>([this](Event& event) {
 			auto& mouseMovedState = static_cast<MouseMovedEvent&>(event);
 			processMouse(mouseMovedState);
 		});

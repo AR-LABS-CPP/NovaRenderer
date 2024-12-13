@@ -6,7 +6,7 @@
 
 namespace Nova {
 	Model::Model() : modelId(-1) {}
-	Model::Model(std::string& path, unsigned int id) {
+	Model::Model(std::string path, unsigned int id) {
 		modelId = id;
 		loadModel(path);
 	}
@@ -17,7 +17,11 @@ namespace Nova {
 		}
 	}
 
-	void Model::loadModel(std::string& path) {
+	size_t Model::getVertices() const {}
+
+	size_t Model::getIndices() const {}
+
+	void Model::loadModel(std::string path) {
 		Assimp::Importer import;
 		const aiScene* scene = import.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_GenSmoothNormals);
 

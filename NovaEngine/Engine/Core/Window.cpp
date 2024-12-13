@@ -111,8 +111,8 @@ namespace Nova {
 			keys[idx] = glfwGetKey(mainWindow, idx) == GLFW_PRESS;
 		}
 
-		KeyStateEvent keyStateEvent(keys, deltaTime);
-		EventBus::getInstance().dispatch(keyStateEvent);
+		KeyStateEvent keyStateEvent(keys, static_cast<GLfloat>(deltaTime));
+		eventQueue.enqueue(std::make_unique<KeyStateEvent>(keyStateEvent));
 
 		if (glfwGetKey(mainWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
 			glfwSetWindowShouldClose(mainWindow, GL_TRUE);
@@ -137,7 +137,7 @@ namespace Nova {
 			win->setWindowHeight(height);
 			
 			WindowResizeEvent resizeEvent(width, height);
-			EventBus::getInstance().dispatch(resizeEvent);
+			EventQueue::getInstance().enqueue(std::make_unique<WindowResizeEvent>(resizeEvent));
 			
 			win->update(glm::vec4(0.1, 0.1, 0.1, 1.0));
 		});
@@ -154,11 +154,11 @@ namespace Nova {
 		if (key >= 0 && key < 1024) {
 			if (action == GLFW_PRESS) {
 				KeyPressedEvent keyPressedEvent(key, 1);
-				EventBus::getInstance().dispatch(keyPressedEvent);
+				EventQueue::getInstance().enqueue(std::make_unique<KeyPressedEvent>(keyPressedEvent));
 			}
 			else if (action == GLFW_RELEASE) {
 				KeyReleasedEvent keyReleasedEvent(key);
-				EventBus::getInstance().dispatch(keyReleasedEvent);
+				EventQueue::getInstance().enqueue(std::make_unique<KeyReleasedEvent>(keyReleasedEvent));
 			}
 		}
 	}
@@ -171,8 +171,8 @@ namespace Nova {
 			currentWindow->lastY = static_cast<GLfloat>(yPos);
 			currentWindow->mouseFirstMoved = false;
 
-			MouseMovedEvent mouseMovedEvent(xPos, yPos, currentWindow->keys);
-			EventBus::getInstance().dispatch(mouseMovedEvent);
+			MouseMovedEvent mouseMovedEvent(static_cast<float>(xPos), static_cast<float>(yPos), currentWindow->keys);
+			EventQueue::getInstance().enqueue(std::make_unique<MouseMovedEvent>(mouseMovedEvent));
 		}
 		else {
 			currentWindow->xChange = static_cast<GLfloat>(xPos - currentWindow->lastX);
@@ -182,7 +182,7 @@ namespace Nova {
 			currentWindow->lastY = static_cast<GLfloat>(yPos);
 
 			MouseMovedEvent mouseMovedEvent(currentWindow->xChange, currentWindow->yChange, currentWindow->keys);
-			EventBus::getInstance().dispatch(mouseMovedEvent);
+			EventQueue::getInstance().enqueue(std::make_unique<MouseMovedEvent>(mouseMovedEvent));
 		}
 	}
 

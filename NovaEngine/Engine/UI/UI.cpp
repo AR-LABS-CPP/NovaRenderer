@@ -6,8 +6,12 @@ namespace Nova {
 
 	UI::UI(
 		Window* currentWindow,
-		LightManagerUI* lightManagerUI
-	) : lightManagerUI(lightManagerUI), attachedWindow(currentWindow) {}
+		LightManagerUI* lightManagerUI,
+		GlobalSettingsUI* globalSettingsUI
+	) : lightManagerUI(lightManagerUI),
+		attachedWindow(currentWindow),
+		globalSettingsUI(globalSettingsUI)
+	{}
 
 	void UI::initializeUI() {
 		IMGUI_CHECKVERSION();
@@ -39,7 +43,6 @@ namespace Nova {
 		initializeDockSpace(windowFlags, dockspace);
 
 		createSceneView(sceneBuffer.getTexture());
-		// need them inside the options panel so index 0
 		createOptionsPanel();
 		createLogsPanel();
 		createCommandsPanel();
@@ -68,12 +71,12 @@ namespace Nova {
 		ImGui::SetNextWindowSize(ImVec2(300, 500), ImGuiCond_Always);
 
 		if (ImGui::Begin("Options", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize)) {
+			globalSettingsUI->drawUI();
 			drawFPSAndMs();
 			addModelOptions();
 			addGizmoOptions();
 			addCameraOptions();
 			addMaterialOptions();
-			addGlobalOptions();
 			lightManagerUI->drawUI();
 		}
 		ImGui::End();
@@ -246,10 +249,12 @@ namespace Nova {
 
 			if (!filePath.empty()) {
 				ModelSelectedEvent modelSelectedEvent(filePath);
-				EventBus::getInstance().dispatch(modelSelectedEvent);
+				evtQueue.enqueue(std::make_unique<ModelSelectedEvent>(modelSelectedEvent));
+			}
+			else {
+				NOVA_WARN("Model file path cannot be zero or empty");
 			}
 
-			NOVA_WARN("Model file path cannot be zero or empty");
 			loadModelPressed = false;
 		}
 		ImGui::Separator();
@@ -304,17 +309,5 @@ namespace Nova {
 		ImGui::Separator();
 	}
 
-	void UI::addGlobalOptions() {
-		ImGui::Text("Global Settings");
-		static ImVec4 bgColor = ImVec4(0.0f, 0.0f, 0.0f, 1.0f);
-		ImGui::ColorEdit4("Background Color", (float*)&bgColor);
-
-		static bool wireframe = false;
-		ImGui::Checkbox("Wireframe Mode", &wireframe);
-		glPolygonMode(GL_FRONT_AND_BACK, wireframe ? GL_LINE : GL_FILL);
-
-		if (ImGui::Button("Reset All", ImVec2(-1, 0))) {
-			// TODO: implement the logic
-		}
-	}
+	void UI::overlayModelInfoInSceneView(const Model& model) {}
 }

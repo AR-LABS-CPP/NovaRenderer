@@ -4,6 +4,7 @@
 #include "Shader.h"
 #include "Log/Log.h"
 #include "ShaderBuilder.h"
+#include "Camera.h"
 
 namespace Nova {
 	enum class ShaderName {
@@ -16,7 +17,7 @@ namespace Nova {
 	class ShaderManager {
 	public:
 		ShaderManager(const std::string& jsonPath);
-		Shader getShader(ShaderName shaderName);
+		Shader getShader(ShaderName shaderName, Camera& cameraObj);
 	private:
 		std::unordered_map<ShaderName, Shader> shaderCache;
 		nlohmann::json shaderData;

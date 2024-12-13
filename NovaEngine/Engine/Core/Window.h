@@ -5,6 +5,7 @@
 #include "Events/WindowEvent.h"
 #include "Events/KeyEvent.h"
 #include "Events/MouseEvent.h"
+#include "Events/EventQueue.h"
 
 namespace Nova {
 	class Window {
@@ -47,6 +48,8 @@ namespace Nova {
 
 		GLdouble lastFrameTime = 0.0;
 		GLdouble deltaTime = 0.0;
+
+		EventQueue& eventQueue = EventQueue::getInstance();
 
 		static void handleKeys(GLFWwindow* window, int key, int code, int action, int mode);
 		static void handleMouse(GLFWwindow* window, double xPos, double yPos);

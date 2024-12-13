@@ -8,13 +8,13 @@ namespace Nova {
         const glm::vec3& ambient,
         const glm::vec3& diffuse,
         const glm::vec3& specular
-    ) : Light(color), direction(direction),
+    ) : color(color), direction(direction),
         ambient(ambient), diffuse(diffuse), specular(specular) {
     }
 
     void DirectionalLight::applyLighting(Shader& shader, GLuint index) const {
         shader.setVec3("directionalLight.direction", direction);
-        shader.setVec3("directionalLight.color", getColor());
+        shader.setVec3("directionalLight.color", color);
         shader.setVec3("directionalLight.ambient", ambient);
         shader.setVec3("directionalLight.diffuse", diffuse);
         shader.setVec3("directionalLight.specular", specular);

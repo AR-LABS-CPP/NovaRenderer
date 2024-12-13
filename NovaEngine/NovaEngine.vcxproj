@@ -197,6 +197,7 @@
     <ClCompile Include="Engine\Core\ModelManager.cpp" />
     <ClCompile Include="Engine\UI\LightManagerUI.cpp" />
     <ClCompile Include="Engine\Renderer\ShaderManager.cpp" />
+    <ClCompile Include="Engine\UI\GlobalSettingsUI.cpp" />
     <ClCompile Include="Vendor\ImGui\imgui.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
@@ -320,6 +321,7 @@
     <ClInclude Include="Engine\Events\Event.h" />
     <ClInclude Include="Engine\Events\EventBus.h" />
     <ClInclude Include="Engine\Events\EventQueue.h" />
+    <ClInclude Include="Engine\Events\GlobalEvent.h" />
     <ClInclude Include="Engine\Events\KeyEvent.h" />
     <ClInclude Include="Engine\Events\LightEvent.h" />
     <ClInclude Include="Engine\Events\MaterialEvent.h" />
@@ -333,6 +335,7 @@
     <ClInclude Include="Engine\UI\LightManagerUI.h" />
     <ClInclude Include="Engine\Renderer\ShaderManager.h" />
     <ClInclude Include="Engine\UI\ManagerUI.h" />
+    <ClInclude Include="Engine\UI\GlobalSettingsUI.h" />
     <ClInclude Include="Vendor\ImGui\imconfig.h" />
     <ClInclude Include="Vendor\ImGui\imgui.h" />
     <ClInclude Include="Vendor\ImGui\ImGuiFileDialog.h" />

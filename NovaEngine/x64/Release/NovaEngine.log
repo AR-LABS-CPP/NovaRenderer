@@ -1,16 +1,7 @@
-﻿  Window.cpp
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Window.cpp(114,37): warning C4244: 'argument': conversion from 'GLdouble' to 'GLfloat', possible loss of data
-  (compiling source file '/Engine/Core/Window.cpp')
-  
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Window.cpp(174,42): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  (compiling source file '/Engine/Core/Window.cpp')
-  
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Window.cpp(174,36): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  (compiling source file '/Engine/Core/Window.cpp')
-  
+﻿  Model.cpp
   Generating code
-  2 of 10117 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  2 of 10265 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    71 functions had inline decision re-evaluated but remain unchanged
+    70 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   NovaEngine.vcxproj -> C:\Users\AR-LABS\source\repos\NovaEngine\x64\Release\NovaEngine.exe

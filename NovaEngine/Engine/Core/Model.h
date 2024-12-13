@@ -13,11 +13,14 @@ namespace Nova {
 		unsigned int modelId;
 
 		Model();
-		Model(std::string& path, unsigned int id);
+		Model(std::string path, unsigned int id);
 
 		void drawModel(const Shader& shader, int width, int height);
+
+		size_t getVertices() const;
+		size_t getIndices() const;
 	private:
-		void loadModel(std::string& path);
+		void loadModel(std::string path);
 		void processNode(aiNode* node, const aiScene* scene, glm::mat4 parentTransform = glm::mat4(1.0f));
 
 		unsigned int textureFromFile(

@@ -9,7 +9,7 @@ namespace Nova {
 	}
 
 	// TODO: the issue is with the cache, fix here
-	Shader ShaderManager::getShader(ShaderName shaderName) {
+	Shader ShaderManager::getShader(ShaderName shaderName, Camera& cameraObj) {
 		/*auto iter = shaderCache.find(shaderName);
 
 		if (iter != shaderCache.end()) {

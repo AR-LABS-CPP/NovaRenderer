@@ -25,7 +25,7 @@
 namespace Nova {
 	class Engine {
 	public:
-		Engine() = default;
+		Engine();
 		~Engine();
 
 		void initializeAndRun();
@@ -41,8 +41,12 @@ namespace Nova {
 		void initializeDefaultLights();
 		void renderAllModels(std::vector<Model> allModels, Shader& objectShader, Window& mainWindow);
 	private:
+		glm::vec4 clearColor;
+
 		LogManager logManager;
 		ModelManager modelManager;
+
+		EventQueue& eventQueue = EventQueue::getInstance();
 
 		void onWindowResize(Event& event) {
 			auto& resizeEvent = static_cast<WindowResizeEvent&>(event);
@@ -53,6 +57,15 @@ namespace Nova {
 
 			Model model(modelLoadEvent.getModelPath(), 0);
 			modelManager.addModel(model);
+		}
+
+		void onBackgroundColorChanged(Event& event) {
+			auto& bgColorChangedEvent = static_cast<BackgroundColorChangedEvent&>(event);
+
+			clearColor.x = bgColorChangedEvent.getXComp();
+			clearColor.y = bgColorChangedEvent.getYComp();
+			clearColor.z = bgColorChangedEvent.getZComp();
+			clearColor.w = bgColorChangedEvent.getWComp();
 		}
 	};
 }

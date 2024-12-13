@@ -6,10 +6,10 @@ namespace Nova {
 	class ModelSelectedEvent : public Event {
 	public:
 		ModelSelectedEvent() = default;
-		ModelSelectedEvent(std::string& modelPath) : modelPath(modelPath) {
+		ModelSelectedEvent(std::string modelPath) : modelPath(modelPath) {
 		}
 
-		inline std::string& getModelPath() {
+		inline std::string getModelPath() {
 			return modelPath;
 		}
 
@@ -22,6 +22,6 @@ namespace Nova {
 		EVENT_CLASS_TYPE(ModelSelected);
 		EVENT_CLASS_CATEGORY(EventCatModel);
 	private:
-		std::string& modelPath;
+		std::string modelPath;
 	};
 }

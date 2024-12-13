@@ -12,6 +12,7 @@
 #include "Renderer/ShaderManager.h"
 #include "ModelManager.h"
 #include "LightManagerUI.h"
+#include "GlobalSettingsUI.h"
 #include <windows.h>
 #include <commdlg.h>
 #include <stdlib.h>
@@ -24,7 +25,8 @@ namespace Nova {
 		UI() = delete;
 		UI(
 			Window* currentWindow,
-			LightManagerUI* lightManagerUI
+			LightManagerUI* lightManagerUI,
+			GlobalSettingsUI* globalSettingsUI
 		);
 		~UI() = default;
 
@@ -55,10 +57,12 @@ namespace Nova {
 		void addGizmoOptions();
 		void addMaterialOptions();
 		void addCameraOptions();
-		void addGlobalOptions();
+
+		void overlayModelInfoInSceneView(const Model& model);
 	private:
 		Window* attachedWindow;
 		LightManagerUI* lightManagerUI;
+		GlobalSettingsUI* globalSettingsUI;
 
 		EventQueue& evtQueue = EventQueue::getInstance();
 	};

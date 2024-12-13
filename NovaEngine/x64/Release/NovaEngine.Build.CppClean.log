@@ -1,6 +1,4 @@
-c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\novaengine.pch
 c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\vc143.pdb
-c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\pch.obj
 c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\window.obj
 c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\spotlight.obj
 c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\shaderbuilder.obj
@@ -12,6 +10,8 @@ c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\material.obj
 c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\logging.obj
 c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\lightmanager.obj
 c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\light.obj
+c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\shadermanager.obj
+c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\lightmanagerui.obj
 c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\modelmanager.obj
 c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\ui.obj
 c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\gizmo.obj
@@ -28,8 +28,9 @@ c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\imgui_impl_glfw.
 c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\imgui_draw.obj
 c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\imgui_demo.obj
 c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\imgui.obj
-c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\shadermanager.obj
-c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\lightmanagerui.obj
+c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\globalsettingsui.obj
+c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\novaengine.pch
+c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\pch.obj
 c:\users\ar-labs\source\repos\novaengine\x64\release\novaengine.exe
 c:\users\ar-labs\source\repos\novaengine\x64\release\novaengine.pdb
 c:\users\ar-labs\source\repos\novaengine\novaengine\x64\release\novaengine.ipdb

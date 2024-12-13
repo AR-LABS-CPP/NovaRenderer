@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Events/EventBus.h"
+#include "Events/EventQueue.h"
 #include "Events/MouseEvent.h"
 #include "Events/KeyEvent.h"
 
@@ -55,5 +55,7 @@ namespace Nova {
 
 		void clampPitch();
 		void updateCameraLookAt();
+
+		EventQueue& eventQueue = EventQueue::getInstance();
 	};
 }

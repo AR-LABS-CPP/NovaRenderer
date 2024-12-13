@@ -60,7 +60,7 @@ namespace Nova {
 
 		FieldOfViewChanged,
 		NearClipChanged,
-		FarClipChanged
+		FarClipChanged,
 	};
 
 	enum EventCategory {
@@ -75,7 +75,8 @@ namespace Nova {
 		EventCatMaterial = BIT(8),
 		EventCatColor = BIT(9),
 		EventCatLight = BIT(10),
-		EventCatCamera = BIT(11)
+		EventCatCamera = BIT(11),
+		EventCatGlobal = BIT(12)
 	};
 
 	class Event {

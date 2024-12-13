@@ -2,6 +2,9 @@
 #include "Engine.h"
 
 namespace Nova {
+	Engine::Engine()
+		: clearColor(glm::vec4(0.2f, 0.2f, 0.2f, 1.0f) ) {}
+
 	void Engine::initializeAndRun() {
 		initializeLogger();
 		subscribeToEvents();
@@ -12,24 +15,29 @@ namespace Nova {
 		Camera camera = initializeCamera(mainWindow);
 
 		ShaderManager shaderManager("Shaders/shaders.json");
-		Shader objectShader = shaderManager.getShader(ShaderName::ObjectShader);
+		Shader objectShader = shaderManager.getShader(
+			ShaderName::ObjectShader,
+			camera
+		);
 		
 		LightManager lightManager(objectShader);
 		LightManagerUI lightManagerUI(lightManager);
+
+		GlobalSettingsUI globalSettingsUI;
 
 		FrameBuffer sceneBuffer(
 			mainWindow.getWindowWidth(),
 			mainWindow.getWindowHeight()
 		);
 		
-		UI novaUi(&mainWindow, &lightManagerUI);
+		UI novaUi(&mainWindow, &lightManagerUI, &globalSettingsUI);
 		novaUi.initializeUI();
 
 		while(!mainWindow.windowShouldClose()) {
 			novaUi.createNewUIFrame();
 			sceneBuffer.bindBuffer(mainWindow.getWindowWidth(), mainWindow.getWindowHeight());
 			
-			mainWindow.update(glm::vec4(0.2f, 0.2f, 0.2f, 1.0f));
+			mainWindow.update(clearColor);
 
 			objectShader.useShader();
 			objectShader.setVec3("viewerPos", camera.getCameraPosition());
@@ -100,12 +108,16 @@ namespace Nova {
 	}
 
 	void Engine::subscribeToEvents() {
-		EventBus::getInstance().subscribe<WindowResizeEvent>([this](Event& event) {
+		eventQueue.subscribe<WindowResizeEvent>([this](Event& event) {
 			onWindowResize(event);
 		});
 
-		EventBus::getInstance().subscribe<ModelSelectedEvent>([this](Event& event) {
+		eventQueue.subscribe<ModelSelectedEvent>([this](Event& event) {
 			onModelLoad(event);
+		});
+
+		eventQueue.subscribe<BackgroundColorChangedEvent>([this](Event& event) {
+			onBackgroundColorChanged(event);
 		});
 
 		NOVA_INFO("Engine subsribed to events");
