@@ -31,14 +31,14 @@ I learned in the following:
 
 ## What's remaining?
 Need to cover the following:
-- [] Shadows.
-- [] Cube maps.
-- [] Advanced lighting (AO - Ambient Occlusion, SSAO - Screen Space Ambient Occlusion, HDR - High Dynamic Range, PBR - Physically Based Rendering).
-- [] Deferred Rendering.
-- [] Acceleration Structures.
-- [] Some research papers or articles on optimization techniques.
-- [] More shader programming.
-- [] ECS (Entity Component System)
+- [ ] Shadows.
+- [ ] Cube maps.
+- [ ] Advanced lighting (AO - Ambient Occlusion, SSAO - Screen Space Ambient Occlusion, HDR - High Dynamic Range, PBR - Physically Based Rendering).
+- [ ] Deferred Rendering.
+- [ ] Acceleration Structures.
+- [ ] Some research papers or articles on optimization techniques.
+- [ ] More shader programming.
+- [ ] ECS (Entity Component System)
 
 ## What will you do after this is done?
 I am planning to cover Vulkan or DX12. The choice depends on if physical books are available where I live and if my GPU can support these.
