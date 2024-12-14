@@ -36,7 +36,6 @@ namespace Nova {
 		while(!mainWindow.windowShouldClose()) {
 			novaUi.createNewUIFrame();
 			sceneBuffer.bindBuffer(mainWindow.getWindowWidth(), mainWindow.getWindowHeight());
-			
 			mainWindow.update(clearColor);
 
 			objectShader.useShader();

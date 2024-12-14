@@ -1,6 +1,36 @@
-﻿  Model.cpp
+﻿  FrameBuffer.cpp
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Renderer\FrameBuffer.cpp(11,50): warning C4244: 'argument': conversion from 'GLfloat' to 'GLsizei', possible loss of data
+  (compiling source file '/Engine/Renderer/FrameBuffer.cpp')
+  
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Renderer\FrameBuffer.cpp(11,43): warning C4244: 'argument': conversion from 'GLfloat' to 'GLsizei', possible loss of data
+  (compiling source file '/Engine/Renderer/FrameBuffer.cpp')
+  
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Renderer\FrameBuffer.cpp(18,70): warning C4244: 'argument': conversion from 'GLfloat' to 'GLsizei', possible loss of data
+  (compiling source file '/Engine/Renderer/FrameBuffer.cpp')
+  
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Renderer\FrameBuffer.cpp(18,63): warning C4244: 'argument': conversion from 'GLfloat' to 'GLsizei', possible loss of data
+  (compiling source file '/Engine/Renderer/FrameBuffer.cpp')
+  
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Renderer\FrameBuffer.cpp(41,50): warning C4244: 'argument': conversion from 'GLfloat' to 'GLsizei', possible loss of data
+  (compiling source file '/Engine/Renderer/FrameBuffer.cpp')
+  
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Renderer\FrameBuffer.cpp(41,43): warning C4244: 'argument': conversion from 'GLfloat' to 'GLsizei', possible loss of data
+  (compiling source file '/Engine/Renderer/FrameBuffer.cpp')
+  
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Renderer\FrameBuffer.cpp(47,70): warning C4244: 'argument': conversion from 'GLfloat' to 'GLsizei', possible loss of data
+  (compiling source file '/Engine/Renderer/FrameBuffer.cpp')
+  
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Renderer\FrameBuffer.cpp(47,63): warning C4244: 'argument': conversion from 'GLfloat' to 'GLsizei', possible loss of data
+  (compiling source file '/Engine/Renderer/FrameBuffer.cpp')
+  
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Renderer\FrameBuffer.cpp(53,27): warning C4244: 'argument': conversion from 'GLfloat' to 'GLsizei', possible loss of data
+  (compiling source file '/Engine/Renderer/FrameBuffer.cpp')
+  
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Renderer\FrameBuffer.cpp(53,20): warning C4244: 'argument': conversion from 'GLfloat' to 'GLsizei', possible loss of data
+  (compiling source file '/Engine/Renderer/FrameBuffer.cpp')
+  
   Generating code
-  2 of 10265 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  3 of 10291 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     70 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

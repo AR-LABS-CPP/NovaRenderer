@@ -5,11 +5,13 @@ namespace Nova {
 	Mesh::Mesh(
 		std::vector<MeshVertex> vertices,
 		std::vector<GLuint> indices,
-		std::vector<MeshTexture> textures
+		std::vector<MeshTexture> textures,
+		BoundingBox boundingBox
 	) {
 		this->vertices = vertices;
 		this->indices = indices;
 		this->textures = textures;
+		this->boundingBox = boundingBox;
 
 		setupMesh();
 	}

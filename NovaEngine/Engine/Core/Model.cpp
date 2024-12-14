@@ -23,7 +23,8 @@ namespace Nova {
 
 	void Model::loadModel(std::string path) {
 		Assimp::Importer import;
-		const aiScene* scene = import.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_GenSmoothNormals);
+		const aiScene* scene = import.ReadFile(path, aiProcess_Triangulate 
+			| aiProcess_FlipUVs | aiProcess_GenSmoothNormals | aiProcess_GenBoundingBoxes);
 
 		NOVA_ASSERT(scene && !(scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE) && scene->mRootNode, "Assimp model must be loaded before proceeding");
 
@@ -49,6 +50,11 @@ namespace Nova {
 		std::vector<MeshVertex> vertices;
 		std::vector<GLuint> indices;
 		std::vector<MeshTexture> textures;
+
+		BoundingBox boundingBox;
+		aiAABB bb = mesh->mAABB;
+		boundingBox.minExtent = glm::vec3(bb.mMin.x, bb.mMin.y, bb.mMin.z);
+		boundingBox.maxExtent = glm::vec3(bb.mMax.x, bb.mMax.y, bb.mMax.z);
 
 		for (unsigned int idx = 0; idx < mesh->mNumVertices; idx++) {
 			MeshVertex vertex;
@@ -151,7 +157,7 @@ namespace Nova {
 			heightMaps.end()
 		);
 
-		return Mesh(vertices, indices, textures);
+		return Mesh(vertices, indices, textures, boundingBox);
 	}
 
 	std::string Model::getLocalDirectory(std::string& directory) {

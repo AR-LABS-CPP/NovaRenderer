@@ -70,7 +70,7 @@ namespace Nova {
 		ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0.1f, 0.1f, 0.1f, 1.0f));
 		ImGui::SetNextWindowSize(ImVec2(300, 500), ImGuiCond_Always);
 
-		if (ImGui::Begin("Options", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize)) {
+		if (ImGui::Begin("Options", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse)) {
 			globalSettingsUI->drawUI();
 			drawFPSAndMs();
 			addModelOptions();
@@ -85,7 +85,10 @@ namespace Nova {
 
 	void UI::createLogsPanel() {
 		ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0.1f, 0.1f, 0.1f, 1.0f));
-		ImGui::Begin("Logs", nullptr, ImGuiWindowFlags_NoCollapse);
+		ImGui::SetNextWindowSize(ImVec2(300, 500), ImGuiCond_Always);
+
+		ImGui::SetNextWindowSize(ImVec2(300, 500), ImGuiCond_Always);
+		ImGui::Begin("Logs", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse);
 		ImGui::Text("Logs Content");
 		ImGui::End();
 		ImGui::PopStyleColor();

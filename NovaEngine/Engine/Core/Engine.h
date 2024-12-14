@@ -21,6 +21,7 @@
 #include "Events/EventBus.h"
 #include "Events/EventQueue.h"
 #include "Gizmo.h"
+#include "Vendor/ImGui/ImGuizmo.h"
 
 namespace Nova {
 	class Engine {

@@ -17,16 +17,23 @@ namespace Nova {
 		std::string path;
 	};
 
+	struct BoundingBox {
+		glm::vec3 minExtent;
+		glm::vec3 maxExtent;
+	};
+
 	class Mesh {
 	public:
 		std::vector<MeshVertex> vertices;
 		std::vector<GLuint> indices;
 		std::vector<MeshTexture> textures;
+		BoundingBox boundingBox;
 
 		Mesh(
 			std::vector<MeshVertex> vertices,
 			std::vector<GLuint> indices,
-			std::vector<MeshTexture> textures
+			std::vector<MeshTexture> textures,
+			BoundingBox boundingBox
 		);
 
 		void drawMesh(const Shader& shader);

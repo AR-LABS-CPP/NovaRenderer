@@ -53,6 +53,7 @@ namespace Nova {
 
 		PointLightStruct() {
 			pointLight = PointLight();
+			position = glm::vec3(1.0);
 		}
 
 		bool setPos(const glm::vec3& newPos) {
@@ -67,6 +68,8 @@ namespace Nova {
 
 		DirectionalLightStruct() {
 			directionalLight = DirectionalLight();
+			direction = glm::vec3(1.0);
+			isActive = false;
 		}
 
 		bool setDir(const glm::vec3& newDir) {
