@@ -368,6 +368,8 @@
   <ItemGroup>
     <None Include="Shaders\Gizmo\GizmoFragmentShader.frag" />
     <None Include="Shaders\Gizmo\GizmoVertexShader.vert" />
+    <None Include="Shaders\Grid\GridFragmentShader.frag" />
+    <None Include="Shaders\Grid\GridVertexShader.vert" />
     <None Include="Shaders\shaders.json" />
     <None Include="Vendor\ImGui\imgui.ini" />
     <None Include="Shaders\Background\Gradient\GradientFragmentShader.frag" />

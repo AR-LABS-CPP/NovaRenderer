@@ -43,7 +43,7 @@ namespace Nova {
 			objectShader.setMat4("projection", camera.getProjectionMatrix());
 			objectShader.setMat4("view", camera.getViewMatrix());
 			objectShader.setMat4("model", glm::mat4(1.0));
-
+			
 			lightManager.applyAllLights();
 			renderAllModels(modelManager.getAllModels(), objectShader, mainWindow);
 

@@ -39,6 +39,9 @@ namespace Nova {
 		case ShaderName::BackgroundShader:
 			shaderKey = "BackgroundShader";
 			break;
+		case ShaderName::GridShader:
+			shaderKey = "GridShader";
+			break;
 		default:
 			throw std::invalid_argument("Unknown shader type.");
 		}

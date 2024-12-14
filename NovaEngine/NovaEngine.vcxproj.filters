@@ -308,5 +308,7 @@
     <None Include="Shaders\Gizmo\GizmoVertexShader.vert" />
     <None Include="Shaders\Gizmo\GizmoFragmentShader.frag" />
     <None Include="Shaders\shaders.json" />
+    <None Include="Shaders\Grid\GridFragmentShader.frag" />
+    <None Include="Shaders\Grid\GridVertexShader.vert" />
   </ItemGroup>
 </Project>

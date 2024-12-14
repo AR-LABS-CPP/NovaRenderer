@@ -17,8 +17,6 @@ uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 
-// uniform float farPlane;
-
 void main()
 {
     FragPos = vec3(model * vec4(aPos, 1.0));
@@ -29,13 +27,8 @@ void main()
     Tangent = normalMatrix * aTangent;
     BiTangent = normalMatrix * aBiTangent;
 
-    // BiTangent = normalize(BiTangent - dot(BiTangent, Normal) * Normal);
-    // TBNMatrix = mat3(Tangent, BiTangent, Normal);
-
-    // float z = (view * model * vec4(aPos, 1.0)).z;
-    // float logDepth = log2(z + 1.0);
-    // float depth = logDepth / log2(100.0 + 1.0);
+    BiTangent = normalize(BiTangent - dot(BiTangent, Normal) * Normal);
+    TBNMatrix = mat3(Tangent, BiTangent, Normal);
 
     gl_Position = projection * view * model * vec4(aPos, 1.0);
-    // gl_Position.z = depth;
 }

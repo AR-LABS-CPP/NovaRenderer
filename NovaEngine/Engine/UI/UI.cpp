@@ -86,8 +86,6 @@ namespace Nova {
 	void UI::createLogsPanel() {
 		ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0.1f, 0.1f, 0.1f, 1.0f));
 		ImGui::SetNextWindowSize(ImVec2(300, 500), ImGuiCond_Always);
-
-		ImGui::SetNextWindowSize(ImVec2(300, 500), ImGuiCond_Always);
 		ImGui::Begin("Logs", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse);
 		ImGui::Text("Logs Content");
 		ImGui::End();
