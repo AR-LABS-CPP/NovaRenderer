@@ -12,13 +12,14 @@ namespace Nova {
 		GridShader,
 		GizmoShader,
 		LightSourceShader,
-		BackgroundShader
+		BackgroundShader,
+		SkyboxShader
 	};
 
 	class ShaderManager {
 	public:
 		ShaderManager(const std::string& jsonPath);
-		Shader getShader(ShaderName shaderName, Camera& cameraObj);
+		Shader getShader(ShaderName shaderName);
 	private:
 		std::unordered_map<ShaderName, Shader> shaderCache;
 		nlohmann::json shaderData;

@@ -10,7 +10,7 @@ namespace Nova {
 			shaderId = 0;
 		}
 
-		NOVA_INFO("A shader just got destroyed");
+		NOVA_WARN("A shader just got destroyed");
 		NOVA_ASSERT(shaderId == 0, "Could not delete the shader");
 	}
 

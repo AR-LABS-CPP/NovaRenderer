@@ -18,5 +18,9 @@
     "GridShader": {
         "vertex": "Shaders/Grid/GridVertexShader.vert",
         "fragment": "Shaders/Grid/GridFragmentShader.frag"
+    },
+    "SkyboxShader": {
+        "vertex": "Shaders/Skybox/SkyboxVertexShader.vert",
+        "fragment": "Shaders/Skybox/SkyboxFragmentShader.frag"
     }
 }

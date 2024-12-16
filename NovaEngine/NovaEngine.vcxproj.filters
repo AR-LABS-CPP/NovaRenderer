@@ -114,6 +114,12 @@
     <ClCompile Include="Vendor\ImGui\ImGuizmo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Core\Skybox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Core\stb_wrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\Window.h">
@@ -284,6 +290,9 @@
     <ClInclude Include="Vendor\ImGui\ImGuizmo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Core\Skybox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\LightSource\LightSourceFragmentShader.frag">
@@ -310,5 +319,7 @@
     <None Include="Shaders\shaders.json" />
     <None Include="Shaders\Grid\GridFragmentShader.frag" />
     <None Include="Shaders\Grid\GridVertexShader.vert" />
+    <None Include="Shaders\Skybox\SkyboxFragmentShader.frag" />
+    <None Include="Shaders\Skybox\SkyboxVertexShader.vert" />
   </ItemGroup>
 </Project>

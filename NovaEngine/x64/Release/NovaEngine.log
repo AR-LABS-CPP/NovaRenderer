@@ -1,35 +1,35 @@
 ﻿  Engine.cpp
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(30,30): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(28,30): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(29,29): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(27,29): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(38,82): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(49,82): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(38,52): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(49,52): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(91,4): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(107,4): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(90,4): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(106,4): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(89,10): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(105,10): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(85,11): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(101,11): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(84,10): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(100,10): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-  UI.cpp
+  Skybox.cpp
   Generating code
-  12 of 10291 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+  10 of 10332 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    187 functions had inline decision re-evaluated but remain unchanged
+    72 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   NovaEngine.vcxproj -> C:\Users\AR-LABS\source\repos\NovaEngine\x64\Release\NovaEngine.exe

@@ -22,6 +22,7 @@
 #include "Events/EventQueue.h"
 #include "Gizmo.h"
 #include "Vendor/ImGui/ImGuizmo.h"
+#include "Skybox.h"
 
 namespace Nova {
 	class Engine {
@@ -39,7 +40,6 @@ namespace Nova {
 		
 		Camera initializeCamera(Window& window);
 		
-		void initializeDefaultLights();
 		void renderAllModels(std::vector<Model> allModels, Shader& objectShader, Window& mainWindow);
 	private:
 		glm::vec4 clearColor;

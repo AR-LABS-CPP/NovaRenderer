@@ -9,7 +9,7 @@ namespace Nova {
 	}
 
 	// TODO: the issue is with the cache, fix here
-	Shader ShaderManager::getShader(ShaderName shaderName, Camera& cameraObj) {
+	Shader ShaderManager::getShader(ShaderName shaderName) {
 		/*auto iter = shaderCache.find(shaderName);
 
 		if (iter != shaderCache.end()) {
@@ -41,6 +41,9 @@ namespace Nova {
 			break;
 		case ShaderName::GridShader:
 			shaderKey = "GridShader";
+			break;
+		case ShaderName::SkyboxShader:
+			shaderKey = "SkyboxShader";
 			break;
 		default:
 			throw std::invalid_argument("Unknown shader type.");
