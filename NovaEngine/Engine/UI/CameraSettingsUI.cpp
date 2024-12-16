@@ -2,12 +2,9 @@
 #include "CameraSettingsUI.h"
 
 namespace Nova {
-	CameraSettingsUI::CameraSettingsUI() {
-		movementSpeed = 2.5;
-		fieldOfView = 45.0f;
-		nearClip = 1.0f;
-		farClip = 100000.0f;
-	}
+	CameraSettingsUI::CameraSettingsUI()
+		: movementSpeed(2.5), fieldOfView(45.0f),
+		  nearClip(0.1f), farClip(100000.0f) {}
 
 	void CameraSettingsUI::drawUI() {
 		ImGui::Text("Camera Settings");

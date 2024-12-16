@@ -12,7 +12,8 @@ namespace Nova {
 	) : lightManagerUI(lightManagerUI),
 		globalSettingsUI(globalSettingsUI),
 		cameraSettingsUI(cameraSettingsUI),
-		attachedWindow(currentWindow)
+		attachedWindow(currentWindow),
+		sceneBuffer(sceneBuffer)
 	{}
 
 	void UI::initializeUI() {
@@ -46,8 +47,8 @@ namespace Nova {
 
 		createSceneView(sceneBuffer.getTexture());
 		createOptionsPanel();
-		createLogsPanel();
-		createCommandsPanel();
+		// createLogsPanel();
+		// createCommandsPanel();
 
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -56,11 +57,11 @@ namespace Nova {
 	void UI::createSceneView(GLuint textureId) {
 		ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0.1f, 0.1f, 0.1f, 1.0f));
 		ImGui::Begin("Scene", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse);
-		float width = ImGui::GetContentRegionAvail().x;
-		float height = ImGui::GetContentRegionAvail().y;
+		sceneViewWidth = ImGui::GetContentRegionAvail().x;
+		sceneViewHeight = ImGui::GetContentRegionAvail().y;
 		ImGui::Image(
 			(ImTextureID)textureId,
-			ImVec2(width, height),
+			ImVec2(sceneViewWidth, sceneViewHeight),
 			ImVec2(0, 1),
 			ImVec2(1, 0)
 		);
@@ -292,4 +293,12 @@ namespace Nova {
 	}
 
 	void UI::overlayModelInfoInSceneView(const Model& model) {}
+
+	int UI::getSceneViewWidth() {
+		return sceneViewWidth;
+	}
+
+	int UI::getSceneViewHeight() {
+		return sceneViewHeight;
+	}
 }

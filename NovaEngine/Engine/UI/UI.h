@@ -60,11 +60,18 @@ namespace Nova {
 		void addMaterialOptions();
 
 		void overlayModelInfoInSceneView(const Model& model);
+
+		int getSceneViewWidth();
+		int getSceneViewHeight();
 	private:
 		Window* attachedWindow;
+		FrameBuffer* sceneBuffer;
 		LightManagerUI* lightManagerUI;
 		GlobalSettingsUI* globalSettingsUI;
 		CameraSettingsUI* cameraSettingsUI;
+
+		int sceneViewWidth = 0;
+		int sceneViewHeight = 0;
 
 		EventQueue& evtQueue = EventQueue::getInstance();
 	};

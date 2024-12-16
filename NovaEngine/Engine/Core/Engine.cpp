@@ -13,6 +13,7 @@ namespace Nova {
 		initializeWindow(mainWindow);
 		
 		Camera camera = initializeCamera(mainWindow);
+		camera.setAspectRatio(16.0f / 9.0f);
 
 		ShaderManager shaderManager("Shaders/shaders.json");
 		Shader objectShader = shaderManager.getShader(ShaderName::ObjectShader);
@@ -29,7 +30,12 @@ namespace Nova {
 			mainWindow.getWindowHeight()
 		);
 		
-		UI novaUi(&mainWindow, &lightManagerUI, &globalSettingsUI, &cameraSettingsUI);
+		UI novaUi(
+			&mainWindow,
+			&lightManagerUI,
+			&globalSettingsUI,
+			&cameraSettingsUI
+		);
 		novaUi.initializeUI();
 
 		std::vector<std::string> faces;
@@ -47,7 +53,7 @@ namespace Nova {
 
 		while (!mainWindow.windowShouldClose()) {
 			novaUi.createNewUIFrame();
-			sceneBuffer.bindBuffer(mainWindow.getWindowWidth(), mainWindow.getWindowHeight());
+			sceneBuffer.bindBuffer(novaUi.getSceneViewWidth(), novaUi.getSceneViewHeight());
 			mainWindow.update(clearColor);
 
 			objectShader.useShader();
@@ -65,6 +71,8 @@ namespace Nova {
 			skybox.renderSkyBox();
 
 			EventQueue::getInstance().process();
+
+			std::cout << novaUi.getSceneViewWidth() << ", " << novaUi.getSceneViewHeight() << std::endl;
 
 			sceneBuffer.unbindBuffer();
 			novaUi.renderUIFrame(sceneBuffer);

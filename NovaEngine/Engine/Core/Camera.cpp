@@ -19,7 +19,7 @@ namespace Nova {
 	) : yaw(yaw), pitch(pitch), lastX(lastX), lastY(lastY), sensitivity(sensitivity), movementSpeed(movementSpeed),
 		fieldOfView(fieldOfView), aspectRatio(aspectRatio), windowWidth(windowWidth), windowHeight(windowHeight),
 		projectionMatrix(glm::mat4(1.0)), cameraPos(cameraPos),cameraFront(cameraFront), cameraUp(cameraUp),
-		nearClip(1.0), farClip(100000.0f) {
+		nearClip(0.1), farClip(100000.0f) {
 		subscribeToEvents();
 	}
 
