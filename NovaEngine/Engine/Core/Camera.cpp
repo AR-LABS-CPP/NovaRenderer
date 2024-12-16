@@ -18,7 +18,8 @@ namespace Nova {
 		glm::vec3 cameraUp
 	) : yaw(yaw), pitch(pitch), lastX(lastX), lastY(lastY), sensitivity(sensitivity), movementSpeed(movementSpeed),
 		fieldOfView(fieldOfView), aspectRatio(aspectRatio), windowWidth(windowWidth), windowHeight(windowHeight),
-		projectionMatrix(glm::mat4(1.0)), cameraPos(cameraPos),cameraFront(cameraFront), cameraUp(cameraUp) {
+		projectionMatrix(glm::mat4(1.0)), cameraPos(cameraPos),cameraFront(cameraFront), cameraUp(cameraUp),
+		nearClip(1.0), farClip(100000.0f) {
 		subscribeToEvents();
 	}
 
@@ -41,7 +42,7 @@ namespace Nova {
 
 	void Camera::setAspectRatio(GLfloat newAspectRatio) {
 		aspectRatio = newAspectRatio;
-		projectionMatrix = glm::perspective(glm::radians(fieldOfView), aspectRatio, 0.5f, 4096.0f);
+		projectionMatrix = glm::perspective(glm::radians(fieldOfView), aspectRatio, nearClip, farClip);
 	}
 
 	void Camera::processKeyboard(KeyStateEvent& event) {
@@ -122,7 +123,7 @@ namespace Nova {
 		if (!projectionMatrixInit) {
 			projectionMatrixInit = true;
 
-			projectionMatrix = glm::perspective(glm::radians(fieldOfView), (float)windowWidth / (float)windowHeight, 0.1f, 100.0f);
+			projectionMatrix = glm::perspective(glm::radians(fieldOfView), (float)windowWidth / (float)windowHeight, nearClip, farClip);
 			return projectionMatrix;
 		}
 
@@ -164,6 +165,22 @@ namespace Nova {
 		eventQueue.subscribe<MouseMovedEvent>([this](Event& event) {
 			auto& mouseMovedState = static_cast<MouseMovedEvent&>(event);
 			processMouse(mouseMovedState);
+		});
+
+		eventQueue.subscribe<CameraFieldOfViewChangedEvent>([this](Event& event) {
+			onFieldOfViewChanged(event);
+		});
+
+		eventQueue.subscribe<CameraNearClipChangedEvent>([this](Event& event) {
+			onNearClipChanged(event);
+		});
+
+		eventQueue.subscribe<CameraFarClipChangedEvent>([this](Event& event) {
+			onFarClipChanged(event);
+		});
+
+		eventQueue.subscribe<CameraMovementSpeedChangedEvent>([this](Event& event) {
+			onMovementSpeedChanged(event);
 		});
 	}
 }

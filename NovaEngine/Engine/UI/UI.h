@@ -13,6 +13,7 @@
 #include "ModelManager.h"
 #include "LightManagerUI.h"
 #include "GlobalSettingsUI.h"
+#include "CameraSettingsUI.h"
 #include <windows.h>
 #include <commdlg.h>
 #include <stdlib.h>
@@ -26,7 +27,8 @@ namespace Nova {
 		UI(
 			Window* currentWindow,
 			LightManagerUI* lightManagerUI,
-			GlobalSettingsUI* globalSettingsUI
+			GlobalSettingsUI* globalSettingsUI,
+			CameraSettingsUI* cameraSettingsUI
 		);
 		~UI() = default;
 
@@ -56,13 +58,13 @@ namespace Nova {
 		void addColorOption();
 		void addGizmoOptions();
 		void addMaterialOptions();
-		void addCameraOptions();
 
 		void overlayModelInfoInSceneView(const Model& model);
 	private:
 		Window* attachedWindow;
 		LightManagerUI* lightManagerUI;
 		GlobalSettingsUI* globalSettingsUI;
+		CameraSettingsUI* cameraSettingsUI;
 
 		EventQueue& evtQueue = EventQueue::getInstance();
 	};

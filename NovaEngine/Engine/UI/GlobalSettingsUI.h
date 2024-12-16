@@ -10,7 +10,6 @@ namespace Nova {
 		GlobalSettingsUI();
 
 		void drawUI() override;
-
 	private:
 		ImVec4 bgColor;
 		bool wireframe;

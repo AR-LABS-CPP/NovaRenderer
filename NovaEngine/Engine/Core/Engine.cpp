@@ -22,22 +22,23 @@ namespace Nova {
 		LightManagerUI lightManagerUI(lightManager);
 
 		GlobalSettingsUI globalSettingsUI;
+		CameraSettingsUI cameraSettingsUI;
 
 		FrameBuffer sceneBuffer(
 			mainWindow.getWindowWidth(),
 			mainWindow.getWindowHeight()
 		);
 		
-		UI novaUi(&mainWindow, &lightManagerUI, &globalSettingsUI);
+		UI novaUi(&mainWindow, &lightManagerUI, &globalSettingsUI, &cameraSettingsUI);
 		novaUi.initializeUI();
 
 		std::vector<std::string> faces;
-		faces.push_back("Textures/day_water_skybox/right.jpg");
-		faces.push_back("Textures/day_water_skybox/left.jpg");
-		faces.push_back("Textures/day_water_skybox/top.jpg");
-		faces.push_back("Textures/day_water_skybox/bottom.jpg");
-		faces.push_back("Textures/day_water_skybox/front.jpg");
-		faces.push_back("Textures/day_water_skybox/back.jpg");
+		faces.push_back("Textures/day_water_skybox/right.png");
+		faces.push_back("Textures/day_water_skybox/left.png");
+		faces.push_back("Textures/day_water_skybox/top.png");
+		faces.push_back("Textures/day_water_skybox/bottom.png");
+		faces.push_back("Textures/day_water_skybox/front.png");
+		faces.push_back("Textures/day_water_skybox/back.png");
 
 		Skybox skybox(faces);
 
@@ -55,7 +56,7 @@ namespace Nova {
 			objectShader.setMat4("view", camera.getViewMatrix());
 			objectShader.setMat4("model", glm::mat4(1.0));
 			
-			lightManager.applyAllLights();
+			lightManager.applyAllLights(); 
 			renderAllModels(modelManager.getAllModels(), objectShader, mainWindow);
 
 			skyboxShader.useShader();

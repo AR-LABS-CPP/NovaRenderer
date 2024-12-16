@@ -1,35 +1,79 @@
-﻿  Engine.cpp
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(28,30): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+﻿  Camera.cpp
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Events\CameraEvent.h(76,19): warning C4244: 'initializing': conversion from 'long' to 'float', possible loss of data
+  (compiling source file '/Engine/Core/Camera.cpp')
+  
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Camera.h(77,44): warning C4244: '=': conversion from 'long' to 'GLfloat', possible loss of data
+  (compiling source file '/Engine/Core/Camera.cpp')
+  
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Camera.cpp(68,25): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+  (compiling source file '/Engine/Core/Camera.cpp')
+  
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Camera.cpp(69,26): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+  (compiling source file '/Engine/Core/Camera.cpp')
+  
+  Engine.cpp
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Events\CameraEvent.h(76,19): warning C4244: 'initializing': conversion from 'long' to 'float', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(27,29): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Camera.h(77,44): warning C4244: '=': conversion from 'long' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(49,82): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(29,30): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(49,52): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(28,29): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+  (compiling source file '/Engine/Core/Engine.cpp')
+  
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(50,82): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+  (compiling source file '/Engine/Core/Engine.cpp')
+  
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(50,52): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+  (compiling source file '/Engine/Core/Engine.cpp')
+  
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(108,4): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
 C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(107,4): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(106,4): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(106,10): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(105,10): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(102,11): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(101,11): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(101,10): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   (compiling source file '/Engine/Core/Engine.cpp')
   
-C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Engine.cpp(100,10): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-  (compiling source file '/Engine/Core/Engine.cpp')
+  ShaderManager.cpp
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Events\CameraEvent.h(76,19): warning C4244: 'initializing': conversion from 'long' to 'float', possible loss of data
+  (compiling source file '/Engine/Renderer/ShaderManager.cpp')
   
-  Skybox.cpp
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Camera.h(77,44): warning C4244: '=': conversion from 'long' to 'GLfloat', possible loss of data
+  (compiling source file '/Engine/Renderer/ShaderManager.cpp')
+  
+  UI.cpp
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Events\CameraEvent.h(76,19): warning C4244: 'initializing': conversion from 'long' to 'float', possible loss of data
+  (compiling source file '/Engine/UI/UI.cpp')
+  
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Camera.h(77,44): warning C4244: '=': conversion from 'long' to 'GLfloat', possible loss of data
+  (compiling source file '/Engine/UI/UI.cpp')
+  
+  main.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(130,9): warning C4005: 'APIENTRY': macro redefinition
+  (compiling source file 'main.cpp')
+      C:\Users\AR-LABS\source\elibs\GLAD\include\glad\glad.h(32,9):
+      see previous definition of 'APIENTRY'
+  
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Events\CameraEvent.h(76,19): warning C4244: 'initializing': conversion from 'long' to 'float', possible loss of data
+  (compiling source file 'main.cpp')
+  
+C:\Users\AR-LABS\source\repos\NovaEngine\NovaEngine\Engine\Core\Camera.h(77,44): warning C4244: '=': conversion from 'long' to 'GLfloat', possible loss of data
+  (compiling source file 'main.cpp')
+  
   Generating code
-  10 of 10332 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  12 of 10517 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    72 functions had inline decision re-evaluated but remain unchanged
+    79 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   NovaEngine.vcxproj -> C:\Users\AR-LABS\source\repos\NovaEngine\x64\Release\NovaEngine.exe

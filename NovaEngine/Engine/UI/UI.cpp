@@ -7,10 +7,12 @@ namespace Nova {
 	UI::UI(
 		Window* currentWindow,
 		LightManagerUI* lightManagerUI,
-		GlobalSettingsUI* globalSettingsUI
+		GlobalSettingsUI* globalSettingsUI,
+		CameraSettingsUI* cameraSettingsUI
 	) : lightManagerUI(lightManagerUI),
-		attachedWindow(currentWindow),
-		globalSettingsUI(globalSettingsUI)
+		globalSettingsUI(globalSettingsUI),
+		cameraSettingsUI(cameraSettingsUI),
+		attachedWindow(currentWindow)
 	{}
 
 	void UI::initializeUI() {
@@ -75,7 +77,7 @@ namespace Nova {
 			drawFPSAndMs();
 			addModelOptions();
 			addGizmoOptions();
-			addCameraOptions();
+			cameraSettingsUI->drawUI();
 			addMaterialOptions();
 			lightManagerUI->drawUI();
 		}
@@ -286,27 +288,6 @@ namespace Nova {
 
 		static float roughness = 1.0f;
 		ImGui::SliderFloat("Roughness", &roughness, 0.0f, 1.0f);
-		ImGui::Separator();
-	}
-
-	void UI::addCameraOptions() {
-		ImGui::Text("Camera Controls (X, Y, Z)");
-		static float cameraPos[3] = { 0.0f, 0.0f, 5.0f };
-		ImGui::InputFloat3("Camera Position", cameraPos);
-
-		static float cameraTarget[3] = { 0.0f, 0.0f, 0.0f };
-		ImGui::InputFloat3("Camera Target", cameraTarget);
-		ImGui::Separator();
-
-		ImGui::Text("Camera Settings");
-		static float fov = 45.0f;
-		ImGui::SliderFloat("Field of View", &fov, 10.0f, 90.0f);
-
-		static float nearClip = 0.1f;
-		ImGui::InputFloat("Near Clip", &nearClip);
-
-		static float farClip = 100.0f;
-		ImGui::InputFloat("Far Clip", &farClip);
 		ImGui::Separator();
 	}
 
