@@ -21,5 +21,6 @@ namespace Nova {
 
 		void applyLighting(Shader& shader, GLuint index) const override;
 		void setDirection(glm::vec3& newDirection);
+		void setColor(glm::vec3& newColor);
 	};
 }

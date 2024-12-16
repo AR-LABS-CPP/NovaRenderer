@@ -18,11 +18,9 @@ namespace Nova {
 	void LightManager::applyDirectionalLight() {
 		attachedShader.setBool("directionalLightActive", dirLight.isActive);
 
-		if (dirLight.isActive && dirLight.hasChanged) { 
-			dirLight.directionalLight.setDirection(dirLight.direction);
+		if (isDirectionalLightActive) { 
 			dirLight.directionalLight.applyLighting(attachedShader, 0);
-			dirLight.resetChangeFlag();
-		}
+		} 
 	}
 
 	void LightManager::applyPointLights() {
@@ -30,8 +28,7 @@ namespace Nova {
 
 		if (currNoOfPointLights > 0) {
 			for (auto& pl : pointLights) {
-				pl.second.pointLight.applyLighting(attachedShader, pl.first);
-				pl.second.pointLight.setPosition(pl.second.position);
+				pl.second.applyLighting(attachedShader, pl.first);
 			}
 		}
 	}
@@ -41,9 +38,7 @@ namespace Nova {
 
 		if (currNoOfSpotLights > 0) {
 			for (auto& sl : spotLights) {
-				sl.second.spotLight.applyLighting(attachedShader, sl.first);
-				sl.second.setPos(sl.second.position);
-				sl.second.setDir(sl.second.direction);
+				sl.second.applyLighting(attachedShader, sl.first);
 			}
 		}
 	}
@@ -78,11 +73,11 @@ namespace Nova {
 		NOVA_INFO("LightManager subscribed to events");
 	}
 
-	std::unordered_map<GLint, SpotLightStruct>& LightManager::getSpotLigts() {
+	std::unordered_map<GLint, SpotLight>& LightManager::getSpotLigts() {
 		return spotLights;
 	}
 	
-	std::unordered_map<GLint, PointLightStruct>& LightManager::getPointLights() {
+	std::unordered_map<GLint, PointLight>& LightManager::getPointLights() {
 		return pointLights;
 	}
 
@@ -122,7 +117,7 @@ namespace Nova {
 			return;
 		}
 
-		SpotLightStruct newSpotLight;
+		SpotLight newSpotLight;
 		spotLights[nextSpotLightId++] = newSpotLight;
 		currNoOfSpotLights += 1;
 
@@ -141,7 +136,7 @@ namespace Nova {
 			return;
 		}
 
-		PointLightStruct newPointLight;
+		PointLight newPointLight;
 		pointLights[nextPointLightId++] = newPointLight;
 		currNoOfPointLights += 1;
 

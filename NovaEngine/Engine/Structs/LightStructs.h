@@ -64,16 +64,22 @@ namespace Nova {
 	struct DirectionalLightStruct : public LightStructBase {
 		DirectionalLight directionalLight;
 		glm::vec3 direction;
+		glm::vec3 color;
 		bool isActive;
 
 		DirectionalLightStruct() {
 			directionalLight = DirectionalLight();
 			direction = glm::vec3(1.0);
+			color = glm::vec3(1.0);
 			isActive = false;
 		}
 
-		bool setDir(const glm::vec3& newDir) {
+		bool setDir(const glm::vec3 newDir) {
 			return setProperty(direction, newDir);
+		}
+
+		bool setColor(const glm::vec3 newColor) {
+			return setProperty(color, newColor);
 		}
 
 		bool toggleActive() {

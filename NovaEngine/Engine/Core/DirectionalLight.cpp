@@ -23,4 +23,8 @@ namespace Nova {
     void DirectionalLight::setDirection(glm::vec3& newDirection) {
         direction = newDirection;
     }
+
+    void DirectionalLight::setColor(glm::vec3& newColor) {
+        color = newColor;
+    }
 }

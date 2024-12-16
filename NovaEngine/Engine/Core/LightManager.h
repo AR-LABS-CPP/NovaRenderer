@@ -24,8 +24,8 @@ namespace Nova {
 		
 		void subscribeToEvents();
 
-		std::unordered_map<GLint, SpotLightStruct>& getSpotLigts();
-		std::unordered_map<GLint, PointLightStruct>& getPointLights();
+		std::unordered_map<GLint, SpotLight>& getSpotLigts();
+		std::unordered_map<GLint, PointLight>& getPointLights();
 
 		DirectionalLightStruct& getDirectionalLight();
 	private:
@@ -34,8 +34,8 @@ namespace Nova {
 		Shader attachedShader;
 
 		DirectionalLightStruct dirLight;
-		std::unordered_map<GLint, SpotLightStruct> spotLights;
-		std::unordered_map<GLint, PointLightStruct> pointLights;
+		std::unordered_map<GLint, SpotLight> spotLights;
+		std::unordered_map<GLint, PointLight> pointLights;
 
 		
 		GLint nextSpotLightId = 0;

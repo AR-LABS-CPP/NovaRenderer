@@ -45,7 +45,7 @@ namespace Nova {
 		skyboxShader.useShader();
 		skyboxShader.setInt("skybox", 0);
 
-		while(!mainWindow.windowShouldClose()) {
+		while (!mainWindow.windowShouldClose()) {
 			novaUi.createNewUIFrame();
 			sceneBuffer.bindBuffer(mainWindow.getWindowWidth(), mainWindow.getWindowHeight());
 			mainWindow.update(clearColor);
@@ -55,8 +55,8 @@ namespace Nova {
 			objectShader.setMat4("projection", camera.getProjectionMatrix());
 			objectShader.setMat4("view", camera.getViewMatrix());
 			objectShader.setMat4("model", glm::mat4(1.0));
-			
-			lightManager.applyAllLights(); 
+
+			lightManager.applyAllLights();
 			renderAllModels(modelManager.getAllModels(), objectShader, mainWindow);
 
 			skyboxShader.useShader();

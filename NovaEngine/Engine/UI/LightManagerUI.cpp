@@ -21,7 +21,8 @@ namespace Nova {
                 evtQueue.enqueue(std::make_unique<DirectionalLightAddedEvent>());
             }
         }
-        ImGui::DragFloat3("Direction", glm::value_ptr(dirLight.direction), 0.1f, -FLT_MIN, FLT_MAX);
+        
+        ImGui::DragFloat3("Direction", glm::value_ptr(dirLight.directionalLight.direction), 0.1f, -FLT_MIN, FLT_MAX);
         ImGui::ColorEdit3("Color", glm::value_ptr(dirLight.directionalLight.color));
 
         if (ImGui::Button("Add Spot Light", ImVec2(-1, 0))) {
@@ -38,17 +39,17 @@ namespace Nova {
         for (auto& [id, sl] : spotLights) {
             ImGui::PushID(id);
             if (ImGui::CollapsingHeader(("Spot Light " + std::to_string(id)).c_str())) {
-                ImGui::DragFloat3("Position", glm::value_ptr(sl.spotLight.position), 0.1f, -FLT_MIN, FLT_MAX);
-                ImGui::DragFloat3("Direction", glm::value_ptr(sl.spotLight.direction), 0.1f, -FLT_MIN, FLT_MAX);
-                ImGui::DragFloat3("Ambient", glm::value_ptr(sl.spotLight.ambient), 0.1f);
-                ImGui::DragFloat3("Diffuse", glm::value_ptr(sl.spotLight.diffuse), 0.1f);
-                ImGui::DragFloat3("Specular", glm::value_ptr(sl.spotLight.specular), 0.1f);
-                ImGui::ColorEdit3("Color", glm::value_ptr(sl.spotLight.color));
-                ImGui::DragFloat("Constant", &sl.spotLight.constant, 0.1f);
-                ImGui::DragFloat("Linear", &sl.spotLight.linear, 0.1f);
-                ImGui::DragFloat("Quadratic", &sl.spotLight.quadratic, 0.1f);
-                ImGui::DragFloat("CutOff", &sl.spotLight.cutOff, 0.1f);
-                ImGui::DragFloat("OuterCutOff", &sl.spotLight.outerCutOff, 0.1f);
+                ImGui::DragFloat3("Position", glm::value_ptr(sl.position), 0.1f, -FLT_MIN, FLT_MAX);
+                ImGui::DragFloat3("Direction", glm::value_ptr(sl.direction), 0.1f, -FLT_MIN, FLT_MAX);
+                ImGui::DragFloat3("Ambient", glm::value_ptr(sl.ambient), 0.1f);
+                ImGui::DragFloat3("Diffuse", glm::value_ptr(sl.diffuse), 0.1f);
+                ImGui::DragFloat3("Specular", glm::value_ptr(sl.specular), 0.1f);
+                ImGui::ColorEdit3("Color", glm::value_ptr(sl.color));
+                ImGui::DragFloat("Constant", &sl.constant, 0.1f);
+                ImGui::DragFloat("Linear", &sl.linear, 0.1f);
+                ImGui::DragFloat("Quadratic", &sl.quadratic, 0.1f);
+                ImGui::DragFloat("CutOff", &sl.cutOff, 0.1f);
+                ImGui::DragFloat("OuterCutOff", &sl.outerCutOff, 0.1f);
 
             }
             ImGui::PopID();
@@ -62,13 +63,13 @@ namespace Nova {
             ImGui::PushID(id);
             if (ImGui::CollapsingHeader(("Point Light " + std::to_string(id)).c_str())) {
                 ImGui::DragFloat3("Position", glm::value_ptr(pl.position), 0.1f, -FLT_MIN, FLT_MAX);
-                ImGui::DragFloat3("Ambient", glm::value_ptr(pl.pointLight.ambient), 0.1f);
-                ImGui::DragFloat3("Diffuse", glm::value_ptr(pl.pointLight.diffuse), 0.1f);
-                ImGui::DragFloat3("Specular", glm::value_ptr(pl.pointLight.specular), 0.1f);
-                ImGui::ColorEdit3("Color", glm::value_ptr(pl.pointLight.color), 0.1f);
-                ImGui::DragFloat("Constant", &pl.pointLight.constant, 0.1f);
-                ImGui::DragFloat("Linear", &pl.pointLight.linear, 0.1f);
-                ImGui::DragFloat("Quadratic", &pl.pointLight.quadratic, 0.1f);
+                ImGui::DragFloat3("Ambient", glm::value_ptr(pl.ambient), 0.1f);
+                ImGui::DragFloat3("Diffuse", glm::value_ptr(pl.diffuse), 0.1f);
+                ImGui::DragFloat3("Specular", glm::value_ptr(pl.specular), 0.1f);
+                ImGui::ColorEdit3("Color", glm::value_ptr(pl.color), 0.1f);
+                ImGui::DragFloat("Constant", &pl.constant, 0.1f);
+                ImGui::DragFloat("Linear", &pl.linear, 0.1f);
+                ImGui::DragFloat("Quadratic", &pl.quadratic, 0.1f);
             }
             ImGui::PopID();
         }

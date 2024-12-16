@@ -27,7 +27,6 @@ namespace Nova {
         );
 
         void applyLighting(Shader& shader, GLuint index) const override;
-
         void setPosition(glm::vec3& newPosition);
     };
 }

@@ -2,9 +2,12 @@
 #include "CameraSettingsUI.h"
 
 namespace Nova {
-	CameraSettingsUI::CameraSettingsUI()
-		: movementSpeed(0.5), fieldOfView(45.0f),
-		nearClip(1.0), farClip(100000.0f) {}
+	CameraSettingsUI::CameraSettingsUI() {
+		movementSpeed = 2.5;
+		fieldOfView = 45.0f;
+		nearClip = 1.0f;
+		farClip = 100000.0f;
+	}
 
 	void CameraSettingsUI::drawUI() {
 		ImGui::Text("Camera Settings");
@@ -18,7 +21,7 @@ namespace Nova {
 			EventQueue::getInstance().enqueue(std::make_unique<CameraNearClipChangedEvent>(camNearClipChangeEvent));
 		}
 		
-		if (ImGui::InputScalar("Far Clip", ImGuiDataType_S64, &farClip, NULL, NULL, "%lld")) {
+		if (ImGui::InputScalar("Far Clip", ImGuiDataType_S32, &farClip, NULL, NULL, "%lld")) {
 			CameraFarClipChangedEvent camFarClipChangeEvent(farClip);
 			EventQueue::getInstance().enqueue(std::make_unique<CameraFarClipChangedEvent>(camFarClipChangeEvent));
 		}

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Jupiter Paint 3D
+* source:	https://sketchfab.com/3d-models/jupiter-paint-3d-62c905858dad488fb4996f0f05fe20d5
+* author:	HD 188753 B (https://sketchfab.com/x3dv3s)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Jupiter Paint 3D" (https://sketchfab.com/3d-models/jupiter-paint-3d-62c905858dad488fb4996f0f05fe20d5) by HD 188753 B (https://sketchfab.com/x3dv3s) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

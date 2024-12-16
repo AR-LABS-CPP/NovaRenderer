@@ -10,6 +10,7 @@ namespace Nova {
 		~Skybox();
 
 		void renderSkyBox();
+		GLuint getSkyboxId();
 	private:
 		static float skyboxVertices[];
 

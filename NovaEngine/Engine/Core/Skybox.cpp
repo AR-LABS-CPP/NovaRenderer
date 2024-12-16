@@ -53,6 +53,10 @@ namespace Nova {
 		loadAndBindTextures(faces);
 	}
 
+	GLuint Skybox::getSkyboxId() {
+		return skyboxId;
+	}
+
 	void Skybox::renderSkyBox() {
 		glDepthFunc(GL_LEQUAL);
 		glBindVertexArray(skyboxVAO);
