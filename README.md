@@ -44,9 +44,9 @@ Need to cover the following:
 I am planning to cover Vulkan or DX12. The choice depends on if physical books are available where I live and if my GPU can support these.
 
 ## The Good, the Bad and the Ugly
-**Good**: everything I have learned so far and what's to come next. Love this subject
-**Bad**: my habit of over thinking things and eventually making them a little complex.
-**Ugly**: my code
+- **Good**: everything I have learned so far and what's to come next. Love this subject
+- **Bad**: my habit of over thinking things and eventually making them a little complex.
+- **Ugly**: my code
 
 ## Some screenshots for visual hungry people
 ![Main Window](https://github.com/user-attachments/assets/79f0e9ba-5a65-4344-a61c-5a14c09d9670)
