@@ -55,4 +55,6 @@ I am planning to cover Vulkan or DX12. The choice depends on if physical books a
 
 ![Sponza with a point light](https://github.com/user-attachments/assets/41da8434-81e8-4b64-bd31-0b1407417ade)
 
+![Sponz Textured with a point light](https://github.com/user-attachments/assets/c5013918-8029-4238-8a42-2464ea7077ef)
+
 ## You have reached the end.
