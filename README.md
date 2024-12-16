@@ -2,7 +2,7 @@
 This is my personal project that I have worked on to learn Computer Graphics using OpenGL and GUI using dear ImGui.
 
 ## Is this useful?
-No this is a hobby project that is mostly related to my learning, everything that I have written there is purely for learning.
+No this is a hobby project that is mostly related to my learning, everything that I have written here is purely for learning.
 
 ## What technologies did you exactly work with?
 I worked with the following:
