@@ -57,4 +57,6 @@ I am planning to cover Vulkan or DX12. The choice depends on if physical books a
 
 ![Sponz Textured with a point light](https://github.com/user-attachments/assets/c5013918-8029-4238-8a42-2464ea7077ef)
 
+![Skybox with moon](https://github.com/user-attachments/assets/f2573dbc-2817-46ae-97fc-16a383dc82fc)
+
 ## You have reached the end.
