@@ -32,7 +32,7 @@ I learned in the following:
 ## What's remaining?
 Need to cover the following:
 - [ ] Shadows.
-- [ ] Cube maps.
+- [x] Cube maps.
 - [ ] Advanced lighting (AO - Ambient Occlusion, SSAO - Screen Space Ambient Occlusion, HDR - High Dynamic Range, PBR - Physically Based Rendering).
 - [ ] Deferred Rendering.
 - [ ] Acceleration Structures.
