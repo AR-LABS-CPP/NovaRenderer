@@ -22,5 +22,9 @@
     "SkyboxShader": {
         "vertex": "Shaders/Skybox/SkyboxVertexShader.vert",
         "fragment": "Shaders/Skybox/SkyboxFragmentShader.frag"
+    },
+    "DepthMapShader": {
+        "vertex": "Shaders/DepthMap/DepthMapVertexShader.vert",
+        "fragment":  "Shaders/DepthMap/DepthMapFragmentShader.frag"
     }
 }

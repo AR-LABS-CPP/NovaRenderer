@@ -72,8 +72,6 @@ namespace Nova {
 
 			EventQueue::getInstance().process();
 
-			std::cout << novaUi.getSceneViewWidth() << ", " << novaUi.getSceneViewHeight() << std::endl;
-
 			sceneBuffer.unbindBuffer();
 			novaUi.renderUIFrame(sceneBuffer);
 			mainWindow.swap();

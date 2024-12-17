@@ -2,6 +2,10 @@
 #include "ModelManager.h"
 
 namespace Nova {
+	ModelManager::ModelManager() {
+		subscribeToEvents();
+	}
+
 	void ModelManager::addModel(Model model) {
 		if (models.find(model.modelId) != models.end()) {
 			NOVA_WARN("Model is already added, ID: " + model.modelId);
@@ -44,5 +48,11 @@ namespace Nova {
 		NOVA_ASSERT(models.find(modelId) == models.end(), "Model could not be removed");
 		
 		return true;
+	}
+
+	void ModelManager::subscribeToEvents() {
+		eventQueue.subscribe<ResetAllEvent>([this](Event& event) {
+			models.clear();
+		});
 	}
 }

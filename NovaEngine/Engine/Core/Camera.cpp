@@ -81,7 +81,6 @@ namespace Nova {
 			pitch += lastY;
 
 			clampPitch();
-
 			updateCameraLookAt();
 		}
 	}

@@ -61,6 +61,8 @@ namespace Nova {
 		FieldOfViewChanged,
 		NearClipChanged,
 		FarClipChanged,
+
+		ResetAll
 	};
 
 	enum EventCategory {

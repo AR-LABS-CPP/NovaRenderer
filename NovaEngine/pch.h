@@ -14,6 +14,7 @@
 #include <map>
 #include <string>
 #include <functional>
+#include <cstdlib>
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>

@@ -3,6 +3,7 @@
 #include "Structs/LightStructs.h"
 #include "Renderer/Shader.h"
 #include "Events/LightEvent.h"
+#include "Events/GlobalEvent.h"
 #include "Events/EventBus.h"
 #include "Events/EventQueue.h"
 
@@ -19,10 +20,9 @@ namespace Nova {
 		void applyDirectionalLight();
 		void applyPointLights();
 		void applySpotLights();
-
 		void applyAllLights();
-		
 		void subscribeToEvents();
+		void clearAllLights();
 
 		std::unordered_map<GLint, SpotLight>& getSpotLigts();
 		std::unordered_map<GLint, PointLight>& getPointLights();

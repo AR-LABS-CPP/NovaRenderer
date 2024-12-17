@@ -24,7 +24,7 @@ namespace Nova {
 		}
 
 		if (ImGui::Button("Reset All", ImVec2(-1, 0))) {
-			// TODO: implement the logic
+			EventQueue::getInstance().enqueue(std::make_unique<ResetAllEvent>());
 		}
 
 		ImGui::Separator();

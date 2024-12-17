@@ -327,5 +327,7 @@
     <None Include="Shaders\Grid\GridVertexShader.vert" />
     <None Include="Shaders\Skybox\SkyboxFragmentShader.frag" />
     <None Include="Shaders\Skybox\SkyboxVertexShader.vert" />
+    <None Include="Shaders\DepthMap\DepthMapVertexShader.vert" />
+    <None Include="Shaders\DepthMap\DepthMapFragmentShader.frag" />
   </ItemGroup>
 </Project>

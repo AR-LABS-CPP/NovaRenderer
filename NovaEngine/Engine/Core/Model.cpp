@@ -23,7 +23,9 @@ namespace Nova {
 	void Model::loadModel(std::string path) {
 		Assimp::Importer import;
 		const aiScene* scene = import.ReadFile(path, aiProcess_Triangulate 
-			| aiProcess_FlipUVs | aiProcess_GenSmoothNormals | aiProcess_GenBoundingBoxes);
+			| aiProcess_FlipUVs
+			| aiProcess_GenSmoothNormals
+			| aiProcess_GenBoundingBoxes);
 
 		NOVA_ASSERT(scene && !(scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE) && scene->mRootNode, "Assimp model must be loaded before proceeding");
 

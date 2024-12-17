@@ -26,4 +26,10 @@ namespace Nova {
 	private:
 		float xComp, yComp, zComp, wComp;
 	};
+
+	class ResetAllEvent : public Event {
+	public:
+		EVENT_CLASS_TYPE(ResetAll);
+		EVENT_CLASS_CATEGORY(EventCatGlobal);
+	};
 }

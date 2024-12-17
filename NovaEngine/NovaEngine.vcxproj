@@ -375,6 +375,8 @@
     <ClInclude Include="Vendor\nlohmann\json_fwd.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Shaders\DepthMap\DepthMapFragmentShader.frag" />
+    <None Include="Shaders\DepthMap\DepthMapVertexShader.vert" />
     <None Include="Shaders\Gizmo\GizmoFragmentShader.frag" />
     <None Include="Shaders\Gizmo\GizmoVertexShader.vert" />
     <None Include="Shaders\Grid\GridFragmentShader.frag" />

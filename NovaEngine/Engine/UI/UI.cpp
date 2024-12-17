@@ -47,8 +47,8 @@ namespace Nova {
 
 		createSceneView(sceneBuffer.getTexture());
 		createOptionsPanel();
-		// createLogsPanel();
-		// createCommandsPanel();
+		createLogsPanel();
+		createCommandsPanel();
 
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

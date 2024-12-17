@@ -45,6 +45,9 @@ namespace Nova {
 		case ShaderName::SkyboxShader:
 			shaderKey = "SkyboxShader";
 			break;
+		case ShaderName::DepthMapShader:
+			shaderKey = "DepthMapShader";
+			break;
 		default:
 			throw std::invalid_argument("Unknown shader type.");
 		}

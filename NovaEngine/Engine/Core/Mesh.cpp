@@ -20,6 +20,7 @@ namespace Nova {
 		GLuint diffuseNr = 1;
 		GLuint specularNr = 1;
 		GLuint normalNr = 1;
+		GLuint heightNr = 1;
 
 		if (textures.size() > 0) {
 			shader.setBool("hasTexture", true);
@@ -38,6 +39,9 @@ namespace Nova {
 				}
 				else if (name == "texture_normal") {
 					number = std::to_string(normalNr++);
+				}
+				else if (name == "texture_height") {
+					number = std::to_string(heightNr++);
 				}
 
 				shader.setInt((name + number).c_str(), idx);

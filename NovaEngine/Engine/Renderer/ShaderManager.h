@@ -13,7 +13,8 @@ namespace Nova {
 		GizmoShader,
 		LightSourceShader,
 		BackgroundShader,
-		SkyboxShader
+		SkyboxShader,
+		DepthMapShader
 	};
 
 	class ShaderManager {

@@ -16,7 +16,7 @@ namespace Nova {
 	LightManager::~LightManager() {}
 
 	void LightManager::applyDirectionalLight() {
-		attachedShader.setBool("directionalLightActive", dirLight.isActive);
+		attachedShader.setBool("directionalLightActive", isDirectionalLightActive);
 
 		if (isDirectionalLightActive) { 
 			dirLight.directionalLight.applyLighting(attachedShader, 0);
@@ -70,6 +70,10 @@ namespace Nova {
 
 		evtQueue.subscribe<PointLightRemovedEvent>([this](Event& event) {});
 
+		evtQueue.subscribe<ResetAllEvent>([this](Event& event) {
+			clearAllLights();
+		});
+
 		NOVA_INFO("LightManager subscribed to events");
 	}
 
@@ -83,6 +87,17 @@ namespace Nova {
 
 	DirectionalLightStruct& LightManager::getDirectionalLight() {
 		return dirLight;
+	}
+
+	void LightManager::clearAllLights() {
+		std::cout << "Lights cleared" << std::endl;
+
+		isDirectionalLightActive = false;
+		spotLights.clear();
+		pointLights.clear();
+
+		currNoOfSpotLights = 0;
+		currNoOfPointLights = 0;
 	}
 
 	void LightManager::onDirectionalLightAdded(Event& event) {

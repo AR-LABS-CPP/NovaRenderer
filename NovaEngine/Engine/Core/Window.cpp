@@ -56,7 +56,7 @@ namespace Nova {
 		mainWindow = glfwCreateWindow(
 			windowWidth,
 			windowHeight,
-			"Nova Engine",
+			"Nova Renderer",
 			nullptr,
 			nullptr
 		);
