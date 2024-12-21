@@ -18,7 +18,7 @@ I worked with the following:
 Well like every other human, I find computer graphics difficult because of all the maths in it but fortunately I was able to progress way more in 2 weeks and though I find math difficult, I still love it (my favorite subject along with physics).
 
 ## What concepts did you learn?
-I learned in the following:
+I learned the following:
 1. Opengl itself, what is it.
 2. GPU pipeline, all the steps in it.
 4. Vertex and Fragment shader.
